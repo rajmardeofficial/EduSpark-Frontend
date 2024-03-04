@@ -1,0 +1,40 @@
+*{
+    margin: 0 0;
+    padding: 0 0;
+}
+.componentGrid{
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.navHeader{
+    height: 90px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F15B46;
+    margin-bottom: 13px;
+    
+}
+.componentGrid .textField{
+    max-width: 33%;
+    width: 31%;
+    margin-left: 10px;
+
+}
+.buttonOfAdd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 13px 20px 13px 24px;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #F15B46;
+    border: transparent;
+    color:#FFFFFF;
+  }
+  
+  

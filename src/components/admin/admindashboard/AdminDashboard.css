@@ -1,0 +1,70 @@
+.navList {
+    width: max-content;
+    max-height: calc(100vh - 112px);
+    top: 114px;
+    left: 8px;
+    overflow-y: auto; 
+  }
+  .navList::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  .navList::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+  }
+.rectangleInClassDashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 79px;
+  width: 159px;
+  top: 22px;
+  left: 52px;
+  opacity: 0.4;
+  background-color: #d9d9d9;
+}
+.iconPart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 0;
+  left: 0px;
+  max-width: 183px;
+}
+.linkInnerPart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active {
+    color: #2d60ff;
+}
+.present {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 6px;
+  top: 114px;
+  left: 8px;
+  border-radius: 0px 10px 10px 0px;
+  /* background-color: #2d60ff; */
+}
+.textAlignInLink {
+  display: flex;
+  max-width: 130px;
+  width: 130px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  position: relative;
+  left: 10px;
+}
+
+@media (min-width: 0px) {
+  .css-1dd0suk-MuiToolbar-root {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
