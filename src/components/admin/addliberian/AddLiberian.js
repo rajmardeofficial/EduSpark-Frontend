@@ -1,5 +1,4 @@
 import { InputAdornment, MenuItem, TextField, IconButton } from "@mui/material";
-import "./AddTeacher.css";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -13,9 +12,6 @@ const AddTeacher = () => {
     phoneNum: "",
     email: "",
     qualification: "",
-    experience: "",
-    chooseclass: "",
-    specialty: "",
     photo: "",
     birth: "",
     pAddress: "",
@@ -105,45 +101,6 @@ const AddTeacher = () => {
           label="Qualification"
           name="qualification"
           autoComplete="qualification"
-          className="textField"
-          onChange={handleOnChange}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="experience"
-          label="Year of Experience"
-          name="experience"
-          autoComplete="experience"
-          className="textField"
-          onChange={handleOnChange}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="chooseclass"
-          label="Teaching Class"
-          name="chooseclass"
-          autoComplete="chooseclass"
-          className="textField"
-          select
-          value={formData.chooseclass}
-          onChange={handleOnChange}
-        >
-          <MenuItem value="class1">Class 1</MenuItem>
-          <MenuItem value="class2">Class 2</MenuItem>
-          <MenuItem value="class3">Class 3</MenuItem>
-        </TextField>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="specialty"
-          label="Subject Specialty"
-          name="specialty"
-          autoComplete="specialty"
           className="textField"
           onChange={handleOnChange}
         />
@@ -243,9 +200,6 @@ const AddTeacher = () => {
           <MenuItem value="class3">B</MenuItem>
         </TextField>
 
-        <button className="buttonOfAdd" type="submit">
-          Add Teacher
-        </button>
       </form>
     </div>
   );

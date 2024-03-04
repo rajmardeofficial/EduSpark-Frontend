@@ -33,6 +33,7 @@ import { PiNotepadBold } from "react-icons/pi";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import ListIcon from '@mui/icons-material/List';
 import AddStudent from "../addstudent/AddStudent";
+import AddLiberian from "../addliberian/AddLiberian"
 
 
 const AdminDashboard = () => {
@@ -169,7 +170,7 @@ const AdminDashboard = () => {
             <Route path="/" element={<AdminHome />} />
             <Route path="/addStudent" element={<AddStudent />} />
             <Route path="/addTeacher" element={<AddTeacher />} />
-
+            <Route path="/addLiberian" element={<AddLiberian />} />           
             {/* <Route path="*" element={<Navigate to="/adminhome" />} /> */}
           </Routes>
         </Box>
