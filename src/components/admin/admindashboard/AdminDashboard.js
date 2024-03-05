@@ -21,8 +21,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./AdminDashboard.css";
-import AddTeacher from "../addteacher/AddTeacher";
-import AdminHome from "../adminHome.js/AdminHome";
 import { PiStudent } from "react-icons/pi";
 import { GiTeacher } from "react-icons/gi";
 import { IoLibraryOutline } from "react-icons/io5"
@@ -32,8 +30,14 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { PiNotepadBold } from "react-icons/pi";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import ListIcon from '@mui/icons-material/List';
-import AddStudent from "../addstudent/AddStudent";
-import AddLiberian from "../addliberian/AddLiberian"
+import AdminHome from "../admincomponents/adminHome.js/AdminHome";
+import AddStudent from "../admincomponents/addstudent/AddStudent";
+import AddTeacher from "../admincomponents/addteacher/AddTeacher";
+import AddLiberian from "../admincomponents/addliberian/AddLiberian";
+import AddDocFacilitates from "../admincomponents/adddocfacilitates/AddDocFacilitates";
+import AddClass from "../admincomponents/addclass/AddClass";
+import FeeSection from "../admincomponents/feesection/FeeSection";
+import Notice from "../admincomponents/notice/Notice";
 
 
 const AdminDashboard = () => {
@@ -170,7 +174,11 @@ const AdminDashboard = () => {
             <Route path="/" element={<AdminHome />} />
             <Route path="/addStudent" element={<AddStudent />} />
             <Route path="/addTeacher" element={<AddTeacher />} />
-            <Route path="/addLiberian" element={<AddLiberian />} />           
+            <Route path="/addLiberian" element={<AddLiberian />} /> 
+            <Route path="/addDocFacilitates" element={<AddDocFacilitates/>} />  
+            <Route path="/addClass" element={<AddClass/>} /> 
+            <Route path="/feesSection" element={<FeeSection/>} />
+            <Route  path="/notice" element={<Notice/>} />             
             {/* <Route path="*" element={<Navigate to="/adminhome" />} /> */}
           </Routes>
         </Box>

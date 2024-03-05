@@ -4,8 +4,11 @@ import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useDispatch, useSelector } from "react-redux";
+import { addLiberian } from "../../../../store/adminrelated/AdminHandle";
 
 const AddTeacher = () => {
+  const {loading} = useSelector((state) => state.admin);
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -17,6 +20,7 @@ const AddTeacher = () => {
     pAddress: "",
     blood: "",
   });
+  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -36,13 +40,6 @@ const AddTeacher = () => {
     }));
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form Data:", formData);
-    // You can send the data to an API or perform further actions
-  };
-
   const handleFileChange = (e) => {
     e.preventDefault();
     const selectedFile = e.target.files[0];
@@ -52,10 +49,21 @@ const AddTeacher = () => {
     //   photo: , // Update only if a file is selected
     // });
   };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form Data:", formData);
+    // You can send the data to an API or perform further actions
+    dispatch(addLiberian(formData))
+    
+  };
+
+
   return (
     <div className="studentComponent">
       <div className="navHeader">
-        <h1>Add Teacher</h1>
+        <h1>Add Liberian</h1>
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
@@ -63,7 +71,7 @@ const AddTeacher = () => {
           required
           fullWidth
           id="name"
-          label="Name of Teacher"
+          label="Name of Liberian"
           name="name"
           autoComplete="name"
           autoFocus
@@ -200,6 +208,9 @@ const AddTeacher = () => {
           <MenuItem value="class3">B</MenuItem>
         </TextField>
 
+        <button className="buttonOfAdd" type="submit">
+          Add Liberian
+        </button>
       </form>
     </div>
   );

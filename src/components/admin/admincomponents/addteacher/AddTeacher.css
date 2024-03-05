@@ -5,6 +5,7 @@
 .componentGrid{
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
+    height: 50px;
 }
 .navHeader{
     height: 90px;

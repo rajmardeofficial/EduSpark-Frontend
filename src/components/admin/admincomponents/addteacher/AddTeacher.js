@@ -1,29 +1,30 @@
 import { InputAdornment, MenuItem, TextField, IconButton } from "@mui/material";
-import "../addteacher/AddTeacher.css";
+import "./AddTeacher.css"
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useDispatch, useSelector } from "react-redux";
+import { addTeacher } from "../../../../store/adminrelated/AdminHandle";
 
-const AddStudent = () => {
-  
+const AddTeacher = () => {
+  const {loading} = useSelector((state) => state.admin);
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phoneNum: "",
-    parentPhoneNum:"",
     email: "",
-    course:"",
-    branch:"",
-    class: "",
-    section: "",
-    yearOfStudy: "",
+    qualification: "",
+    experience: "",
+    chooseclass: "",
+    specialty: "",
     photo: "",
     birth: "",
     pAddress: "",
     blood: "",
   });
+  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -43,13 +44,6 @@ const AddStudent = () => {
     }));
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form Data:", formData);
-    // You can send the data to an API or perform further actions
-  };
-
   const handleFileChange = (e) => {
     e.preventDefault();
     const selectedFile = e.target.files[0];
@@ -60,10 +54,18 @@ const AddStudent = () => {
     // });
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form Data:", formData);
+    // You can send the data to an API or perform further actions
+    dispatch(addTeacher(formData))
+  };
+
   return (
     <div className="studentComponent">
       <div className="navHeader">
-        <h1>Add Student</h1>
+        <h1>Add Teacher</h1>
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
@@ -71,7 +73,7 @@ const AddStudent = () => {
           required
           fullWidth
           id="name"
-          label="Name of Student"
+          label="Name of Teacher"
           name="name"
           autoComplete="name"
           autoFocus
@@ -93,22 +95,11 @@ const AddStudent = () => {
           margin="normal"
           required
           fullWidth
-          id="parentPhoneNum"
-          label="Parent Phone"
-          name="parentPhoneNum"
-          autoComplete="parentPhoneNum"
-          className="textField"
-          onChange={handleOnChange}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
           id="email"
           label="Email Address"
           name="email"
-          type="email"
           autoComplete="email"
+          type="email"
           className="textField"
           onChange={handleOnChange}
         />
@@ -116,47 +107,35 @@ const AddStudent = () => {
           margin="normal"
           required
           fullWidth
-          id="course"
-          label="Course"
-          name="course"
-          autoComplete="course"
+          id="qualification"
+          label="Qualification"
+          name="qualification"
+          autoComplete="qualification"
           className="textField"
-          select
-          value={formData.course}
           onChange={handleOnChange}
-        >
-          <MenuItem value="Btech">Btech</MenuItem>
-          <MenuItem value="class2">Class 2</MenuItem>
-          <MenuItem value="class3">Class 3</MenuItem>
-        </TextField>
+        />
         <TextField
           margin="normal"
           required
           fullWidth
-          id="branch"
-          label="Branch"
-          name="branch"
-          autoComplete="branch"
+          id="experience"
+          label="Year of Experience"
+          name="experience"
+          autoComplete="experience"
           className="textField"
-          select
-          value={formData.branch}
           onChange={handleOnChange}
-        >
-          <MenuItem value="branch1">branch 1</MenuItem>
-          <MenuItem value="branch2">branch 2</MenuItem>
-          <MenuItem value="branch3">branch 3</MenuItem>
-        </TextField>
+        />
         <TextField
           margin="normal"
           required
           fullWidth
-          id="class"
-          label="Class"
-          name="class"
-          autoComplete="class"
+          id="chooseclass"
+          label="Teaching Class"
+          name="chooseclass"
+          autoComplete="chooseclass"
           className="textField"
           select
-          value={formData.class}
+          value={formData.chooseclass}
           onChange={handleOnChange}
         >
           <MenuItem value="class1">Class 1</MenuItem>
@@ -167,36 +146,13 @@ const AddStudent = () => {
           margin="normal"
           required
           fullWidth
-          id="section"
-          label="Section"
-          name="section"
-          autoComplete="section"
+          id="specialty"
+          label="Subject Specialty"
+          name="specialty"
+          autoComplete="specialty"
           className="textField"
-          select
-          value={formData.section}
           onChange={handleOnChange}
-        >
-          <MenuItem value="A"> A</MenuItem>
-          <MenuItem value="B"> B</MenuItem>
-          <MenuItem value="C"> C</MenuItem>
-        </TextField>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="yearOfStudy"
-          label="Year of Study"
-          name="yearOfStudy"
-          autoComplete="yearOfStudy"
-          className="textField"
-          select
-          value={formData.yearOfStudy}
-          onChange={handleOnChange}
-        >
-          <MenuItem value="2020">2020</MenuItem>
-          <MenuItem value="class2">Class 2</MenuItem>
-          <MenuItem value="class3">Class 3</MenuItem>
-        </TextField>
+        />
         <TextField
           margin="normal"
           fullWidth
@@ -294,11 +250,11 @@ const AddStudent = () => {
         </TextField>
 
         <button className="buttonOfAdd" type="submit">
-          Add Student
+          Add Teacher
         </button>
       </form>
     </div>
   );
 };
 
-export default AddStudent;
+export default AddTeacher;
