@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import AdminDashboard from "./components/admin/admindashboard/AdminDashboard"
+import Login from "./components/LoginScreen/Login/Login";
 
 function App() {
   let role = "Admin";
@@ -13,6 +14,7 @@ function App() {
       {role === "Admin" && <AdminDashboard />}
 
       {role !== "Admin" && <Routes>
+        <Router path="/" element={<Login/>}/>
         
         </Routes>}
     </Router>

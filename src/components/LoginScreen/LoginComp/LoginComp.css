@@ -1,0 +1,134 @@
+.frame-child,
+.group-input-child {
+  height: 60px;
+  border-radius: 5px;
+  background-color: #e4e4e4;
+}
+.group-input-child {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 19px 25px 18px;
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  min-width: 250px;
+}
+.frame-child {
+  width: 500px;
+  position: relative;
+  display: none;
+  max-width: 100%;
+}
+.enter-password {
+  width: 140px;
+  border: 0;
+  outline: 0;
+  font-family: Roboto;
+  font-size: 20px;
+  background-color: transparent;
+  height: 23px;
+  position: relative;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  display: inline-block;
+  z-index: 1;
+}
+.mdihide-icon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  min-height: 24px;
+  z-index: 1;
+}
+.rectangle-parent {
+  align-self: stretch;
+  border-radius: 5px;
+  background-color: #e4e4e4;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 18px 25px;
+  box-sizing: border-box;
+  max-width: 100%;
+  gap: 20px;
+}
+.forgot-password {
+  width: 181px;
+  position: relative;
+  font-size: 20px;
+  font-family: Roboto;
+  color: #2f82ff;
+  text-align: left;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+.frame-item {
+  height: 52px;
+  width: 133px;
+  position: relative;
+  border-radius: 5px;
+  background-color: #f15b46;
+  display: none;
+}
+.log-in {
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Roboto;
+  color: #fff;
+  text-align: left;
+  z-index: 1;
+}
+.rectangle-group {
+  cursor: pointer;
+  border: 0;
+  padding: 15px 35px 14px 39px;
+  background-color: #f15b46;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.rectangle-group:hover {
+  background-color: #d9422e;
+}
+.group-input,
+.log-in-text {
+  display: flex;
+  max-width: 100%;
+}
+.log-in-text {
+  width: 463px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.group-input {
+  margin: 0;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 15px 0;
+}
+@media screen and (max-width: 450px) {
+  .enter-password,
+  .forgot-password {
+    font-size: 16px;
+  }
+}

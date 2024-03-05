@@ -1,0 +1,109 @@
+.frame-group-child {
+  width: 720px;
+  height: 1024px;
+  position: relative;
+  background-color: #f15b46;
+  display: none;
+  max-width: 100%;
+}
+.learning-bro-1-icon {
+  height: 500px;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  z-index: 1;
+}
+.learningbro-frame {
+  width: 503px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 0 3px;
+}
+.learningbro-frame,
+.line-separator,
+.text-instruction {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.text-instruction {
+  height: 2px;
+  flex: 1;
+  position: relative;
+  border-top: 1.5px solid #fff;
+  z-index: 1;
+}
+.line-separator {
+  align-self: stretch;
+  height: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 8px;
+}
+.anyone-who-stops {
+  width: 553px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  z-index: 1;
+}
+.frame-group,
+.parent-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 20px 0 22px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.frame-group {
+  width: 720px;
+  background-color: #f15b46;
+  flex-direction: column;
+  align-items: center;
+  padding: 126px 55px 212px 52px;
+  gap: 44px 0;
+  min-width: 720px;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+  font-family: Inter;
+}
+@media screen and (max-width: 1275px) {
+  .frame-group {
+    flex: 1;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .frame-group {
+    padding-top: 82px;
+    padding-bottom: 138px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 750px) {
+  .frame-group {
+    gap: 44px 0;
+    padding-left: 26px;
+    padding-right: 27px;
+    box-sizing: border-box;
+    min-width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .anyone-who-stops {
+    font-size: 20px;
+  }
+  .frame-group {
+    padding-top: 53px;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+  }
+}
