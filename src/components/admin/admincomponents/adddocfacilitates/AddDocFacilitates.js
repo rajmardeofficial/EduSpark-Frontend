@@ -55,6 +55,7 @@ const AddDocFacilitates = () => {
           label="Document fees (if applicable)"
           name="fees"
           autoComplete="fees"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />

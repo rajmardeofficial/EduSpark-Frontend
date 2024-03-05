@@ -61,6 +61,13 @@
   position: relative;
   left: 10px;
 }
+.alertPosition{
+  width: max-content;
+  position: fixed;
+  top: 22px;
+  right: 5px;
+  
+}
 
 @media (min-width: 0px) {
   .css-1dd0suk-MuiToolbar-root {

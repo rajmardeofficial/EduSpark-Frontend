@@ -1,18 +1,6 @@
 import React, { useState } from "react";
-import { Box, CssBaseline, Toolbar, List } from "@mui/material";
-import {
-  styled,
-  Drawer as MuiDrawer,
-  AppBar as MuiAppBar,
-} from "@mui/material";
-
-import {
-  Divider,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Box, CssBaseline} from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import {
   BrowserRouter as Router,
@@ -38,6 +26,9 @@ import AddDocFacilitates from "../admincomponents/adddocfacilitates/AddDocFacili
 import AddClass from "../admincomponents/addclass/AddClass";
 import FeeSection from "../admincomponents/feesection/FeeSection";
 import Notice from "../admincomponents/notice/Notice";
+import AddAdminAccount from "../admincomponents/addadminaccount/AddAdminAccount";
+import DocReqList from "../admincomponents/docreqlist/DocReqList";
+import DrawerOfDashboard from "../../drawer/DrawerOfDashboard";
 
 
 const AdminDashboard = () => {
@@ -47,51 +38,7 @@ const AdminDashboard = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const drawerWidth = 240;
 
-  const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(["width", "margin"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    }),
-  }));
-
-  const Drawer = styled(MuiDrawer, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })(({ theme, open }) => ({
-    "& .MuiDrawer-paper": {
-      position: "relative",
-      whiteSpace: "nowrap",
-      width: drawerWidth,
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      boxSizing: "border-box",
-      ...(!open && {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up("sm")]: {
-          width: theme.spacing(9),
-        },
-      }),
-    },
-  }));
   const menuItems = [
     { to: "/", text: "Home", icon: HomeIcon },
     { to: "/addStudent", text: "Add Student", icon: PiStudent },
@@ -112,62 +59,8 @@ const AdminDashboard = () => {
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <Drawer
-          variant="permanent"
-          open={open}
-          sx={open ? styles.drawerStyled : styles.hideDrawer}
-        >
-          <div style={{ width: "235px" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100px",
-              }}
-            >
-              <div className="rectangleInClassDashboard"></div>
-            </div>
-            <Divider />
-            <div className="navList">
-              <List component="nav">
-                {menuItems.map((item, index) => (
-                  <ListItemButton key={index} component={Link} to={item.to}>
-                    <div
-                      className={
-                        location.pathname === item.to
-                          ? "linkInnerPart active"
-                          : "linkInnerPart"
-                      }
-                    >
-                      <div
-                        className="present"
-                        style={{
-                          background:
-                            location.pathname === item.to ? "#2d60ff" : "none",
-                        }}
-                      ></div>
-                      <ListItemIcon className="iconPart">
-                        {React.createElement(item.icon, {
-                          style: {
-                            fontWeight: "bolder",
-                            fontSize: "23px",
-                            color:
-                              location.pathname === item.to ? "#2d60ff" : "inherit",
-                          },
-                        })}
-                      </ListItemIcon>
-                      <ListItemText
-                        className="textAlignInLink"
-                        primary={item.text}
-                      />
-                    </div>
-                  </ListItemButton>
-                ))}
-              </List>
-            </div>
-          </div>
-        </Drawer>
+
+        <DrawerOfDashboard open={open} menuItems={menuItems} location={location} />
 
         <Box component="main" sx={styles.boxStyled}>
           <Routes>
@@ -178,8 +71,10 @@ const AdminDashboard = () => {
             <Route path="/addDocFacilitates" element={<AddDocFacilitates/>} />  
             <Route path="/addClass" element={<AddClass/>} /> 
             <Route path="/feesSection" element={<FeeSection/>} />
-            <Route  path="/notice" element={<Notice/>} />             
-            {/* <Route path="*" element={<Navigate to="/adminhome" />} /> */}
+            <Route  path="/notice" element={<Notice/>} />
+            <Route path="/addAdminAccount" element={<AddAdminAccount/>} />
+            <Route path="/docReqList" element={<DocReqList/>} />                          
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Box>
       </Box>

@@ -101,6 +101,7 @@ const AddClass = () => {
           required
           name="fees"
           autoComplete="fees"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />

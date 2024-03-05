@@ -86,6 +86,7 @@ const AddTeacher = () => {
           label="Phone Number"
           name="phoneNum"
           autoComplete="phoneNum"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />

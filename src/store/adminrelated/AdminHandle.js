@@ -59,3 +59,23 @@ export const publishNotice = (fields) => async (dispatch) => {
     dispatch(authError(error?.message));
   }
 };
+
+export const addAdminAccount = (fields) => async (dispatch) => {
+  dispatch(authRequest());
+  try {
+    console.log(fields);
+  } catch (error) {
+    console.log(error);
+    dispatch(authError(error?.message));
+  }
+};
+
+export const docReqList = (fields) => async (dispatch) => {
+  dispatch(authRequest());
+  try {
+    console.log(fields);
+  } catch (error) {
+    console.log(error);
+    dispatch(authError(error?.message));
+  }
+};

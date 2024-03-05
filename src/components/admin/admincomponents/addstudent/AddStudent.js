@@ -90,6 +90,7 @@ const AddStudent = () => {
           label="Phone Number"
           name="phoneNum"
           autoComplete="phoneNum"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />
@@ -101,6 +102,7 @@ const AddStudent = () => {
           label="Parent Phone"
           name="parentPhoneNum"
           autoComplete="parentPhoneNum"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />
