@@ -1,0 +1,29 @@
+.secondDivOfAttendance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 45px;
+  margin-left: 10px;
+  width: calc(93% + 20px);
+  gap: 10px;
+  flex-direction: column;
+}
+.classListDiv{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border: 1px solid #CFCFD0;
+  border-radius: 4px;
+  height: 55px;
+  color: #707071;
+  padding-left: 14px;
+}
+
+@media screen and (max-width:670px){
+    .secondDivOfAttendance {
+        margin-top: 110px;
+      }
+
+      
+}

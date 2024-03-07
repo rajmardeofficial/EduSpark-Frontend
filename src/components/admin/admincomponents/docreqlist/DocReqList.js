@@ -103,7 +103,6 @@ const DocReqList = () => {
             slotProps={{
               textField: {
                 variant: "outlined",
-                label: "Date of Birth",
                 margin: "normal",
                 fullWidth: true,
                 id: "birth",

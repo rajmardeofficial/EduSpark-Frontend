@@ -1,0 +1,29 @@
+.feeSectionButton{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 14px;
+    margin-top: 10px;
+    gap: 25px;
+}
+.styleOfSelectedButton{
+    width: 153px;
+    height: 59px;
+    background-color: #F15B46;
+    color: #FFFFFF;
+    line-height: 19px;
+    font-size: 16px;
+    border: transparent;
+    border-radius: 4px;
+}
+
+.styleOfUnselectedButton{
+    width: 153px;
+    height: 59px;
+    background-color: #FFFFFF;
+    color: #B1B1B1;
+    line-height: 19px;
+    font-size: 16px;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+}

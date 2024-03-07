@@ -28,7 +28,7 @@ import FeeSection from "../admincomponents/feesection/FeeSection";
 import Notice from "../admincomponents/notice/Notice";
 import AddAdminAccount from "../admincomponents/addadminaccount/AddAdminAccount";
 import DocReqList from "../admincomponents/docreqlist/DocReqList";
-import DrawerOfDashboard from "../../drawer/DrawerOfDashboard";
+import DrawerOfDashboard from "../../../common/drawer/DrawerOfDashboard";
 
 
 const AdminDashboard = () => {
