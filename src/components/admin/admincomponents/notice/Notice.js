@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Notice.css";
 import { publishNotice } from "../../../../store/adminrelated/AdminHandle";
 import NoticeOrNote from "../../../../common/noticeandnote/NoticeOrNote";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const Notice = () => {
   const { loading } = useSelector((state) => state.admin);
@@ -47,6 +48,9 @@ const Notice = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Notice</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       {!openNotice ? (
         <form onSubmit={handleAddNotice} className="componentGrid">

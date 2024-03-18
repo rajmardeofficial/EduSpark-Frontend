@@ -8,13 +8,13 @@
     height: 50px;
 }
 .navHeader{
-    height: 90px;
+    height: 55px;
     width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: #F15B46;
-    margin-bottom: 13px;
+    /* margin-bottom: px; */
     
 }
 .componentGrid .textField{

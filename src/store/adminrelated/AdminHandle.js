@@ -1,4 +1,13 @@
-import { authRequest, authSuccess, authFailed, authError } from "./AdminSlice";
+import { authRequest, authSuccess, authFailed, authSetCurrentRoleType, authError } from "./AdminSlice";
+
+export const setCurrentDataType = (fields) => async (dispatch) => {
+  try {
+    dispatch(authSetCurrentRoleType(fields))
+  } catch (error) {
+    console.log("error while setting currentDataType");
+    console.log(error);
+  }
+}
 
 export const addStudent = (fields) => async (dispatch) => {
   dispatch(authRequest());

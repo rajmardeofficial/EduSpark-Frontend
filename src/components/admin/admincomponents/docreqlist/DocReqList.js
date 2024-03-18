@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { docReqList } from '../../../../store/adminrelated/AdminHandle';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import RoleType from '../../../../common/roleType/RoleType';
 
 const DocReqList = () => {
   const { loading } = useSelector((state) => state.admin);
@@ -48,6 +49,9 @@ const DocReqList = () => {
     <div className="navHeader">
       <h1>Document Req List </h1>
     </div>
+    <div>
+      <RoleType roleType={"All Three"} />
+      </div>
     <form className="componentGrid" onSubmit={handleFormSubmit}>
     <TextField
           margin="normal"

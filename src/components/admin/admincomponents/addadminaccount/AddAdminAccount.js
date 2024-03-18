@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addAdminAccount } from "../../../../store/adminrelated/AdminHandle";
 import { Alert, TextField } from "@mui/material";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const AddAdminAccount = () => {
   const { loading } = useSelector((state) => state.admin);
@@ -50,6 +51,9 @@ const AddAdminAccount = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Add Admin Account</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField

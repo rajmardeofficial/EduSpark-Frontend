@@ -6,9 +6,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { addStudent } from "../../../../store/adminrelated/AdminHandle";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const AddStudent = () => {
-  const {loading} = useSelector((state) => state.admin);
+  const {loading,currentDataType} = useSelector((state) => state.admin);
 
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const AddStudent = () => {
     blood: "",
   });
   const dispatch = useDispatch();
+  console.log(currentDataType);
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -68,6 +70,9 @@ const AddStudent = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Add Student</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
@@ -118,7 +123,7 @@ const AddStudent = () => {
           className="textField"
           onChange={handleOnChange}
         />
-        <TextField
+        {(currentDataType === "College" || currentDataType === "Jr College") && <> <TextField
           margin="normal"
           required
           fullWidth
@@ -151,7 +156,7 @@ const AddStudent = () => {
           <MenuItem value="branch1">branch 1</MenuItem>
           <MenuItem value="branch2">branch 2</MenuItem>
           <MenuItem value="branch3">branch 3</MenuItem>
-        </TextField>
+        </TextField> </>}
         <TextField
           margin="normal"
           required

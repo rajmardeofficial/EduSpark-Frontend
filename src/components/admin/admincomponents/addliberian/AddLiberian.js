@@ -6,6 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { addLiberian } from "../../../../store/adminrelated/AdminHandle";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const AddTeacher = () => {
   const {loading} = useSelector((state) => state.admin);
@@ -64,6 +65,9 @@ const AddTeacher = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Add Liberian</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./FeeSection.css";
 import { useSelector } from "react-redux";
 import Table from "../../../../common/table/Table";
+import RoleType from "../../../../common/roleType/RoleType";
 const FeeSection = () => {
   const { loading } = useSelector((state) => state.admin);
   const [clickedListButton, setClickedListButton] = useState(true);
@@ -21,7 +22,9 @@ const FeeSection = () => {
       <div className="navHeader">
         <h1>Fees Section</h1>
       </div>
-
+      <div>
+      <RoleType roleType={"All Three"} />
+      </div>
     </div>
   );
 };

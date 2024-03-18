@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDocFacilitates } from "../../../../store/adminrelated/AdminHandle";
 import { MenuItem, TextField } from "@mui/material";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const AddDocFacilitates = () => {
   const { loading } = useSelector((state) => state.admin);
@@ -34,6 +35,9 @@ const AddDocFacilitates = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Add Doc Facilitates</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField

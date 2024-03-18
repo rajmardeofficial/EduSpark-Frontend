@@ -7,9 +7,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeacher } from "../../../../store/adminrelated/AdminHandle";
+import RoleType from "../../../../common/roleType/RoleType";
 
 const AddTeacher = () => {
-  const {loading} = useSelector((state) => state.admin);
+  const {loading,currentDataType} = useSelector((state) => state.admin);
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -66,6 +67,9 @@ const AddTeacher = () => {
     <div className="studentComponent">
       <div className="navHeader">
         <h1>Add Teacher</h1>
+      </div>
+      <div>
+      <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
