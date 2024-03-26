@@ -1,0 +1,82 @@
+/* Default styles */
+.leftcontainer {
+    flex: 1;
+    background: #F15B46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .App{
+    display: flex; height: 100vh;gap:3%;justify-content: space-between;
+  }
+  .button-login {
+    background-color: #F15B46;
+    color: white;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Make the edges round */
+  }
+  
+  .rightcontainer{
+    flex: 1;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+       gap:3%;
+       margin-right: 2%;
+  }
+  
+  .Logintext{
+    text-align: center; margin-bottom: 20px;
+  }
+  .Form{
+    max-width: 500px; width: 80%; 
+  }
+  /* Media query for mobile devices (max-width: 768px) */
+  @media (max-width: 768px) {
+    .leftcontainer {
+      display: none;
+    }
+    .button-login {
+      background-color: black;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      border: none; /* Remove the border */
+      border-radius: 5px; /* Make the edges round */
+    }
+
+    .App{
+      display: flex; height: 100vh;gap:3%;justify-content: space-between;
+      background-color: #F15B46;
+      
+
+    }
+    .Logintext{
+      text-align: center; 
+      margin-bottom: 20px;
+      color: white !important; /* Set text color to white */
+  }
+  
+  .Form{
+    max-width: 500px; width: 90%; margin-bottom: 150px;
+  }
+
+  body::before {
+    content: '';
+    background-image: url('/public/planet.png'); /* Path to your image in the public folder */
+    background-size: cover;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200px; /* Set the width of the image */
+    height: 200px; /* Set the height of the image */
+    z-index: 9999;
+  }
+    
+  }
+  

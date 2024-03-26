@@ -1,20 +1,29 @@
-import "./App.css";
+
 import {
   BrowserRouter as Router,
-  Routes,
+  Routes,Route,
 } from "react-router-dom";
 
-import AdminDashboard from "./components/admin/admindashboard/AdminDashboard"
+
+import Login from "./components/LoginScreen/Login/Login";
 
 function App() {
-  let role = "Admin";
+  let role = "";
   return (
     <Router>
-      {role === "Admin" && <AdminDashboard />}
+   
 
-      {role !== "Admin" && <Routes>
-        
+      
+        {/* {role === "Admin" && <AdminDashboard />}
+      {role === "Teacher" && <TeacherDashboard />} */}
+
+      {role === "" && <Routes>
+        <Route path="/" element={<Login/>}/>
+        {/* <Route path="/LoginBack" element={<LoginBack/>}/>
+        <Route path="/Otp" element={<Otp/>}/>
+        <Route path="/ResetPassword" element={<ResetPassword/>}/> */}
         </Routes>}
+        
     </Router>
   );
 }
