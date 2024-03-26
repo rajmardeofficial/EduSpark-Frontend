@@ -17,7 +17,7 @@ function App() {
         {/* {role === "Admin" && <AdminDashboard />}
       {role === "Teacher" && <TeacherDashboard />} */}
 
-      {role == "" && <Routes>
+      {role === "" && <Routes>
         <Route path="/" element={<Login/>}/>
         {/* <Route path="/LoginBack" element={<LoginBack/>}/>
         <Route path="/Otp" element={<Otp/>}/>
