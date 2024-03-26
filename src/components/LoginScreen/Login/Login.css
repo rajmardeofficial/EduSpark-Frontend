@@ -1,76 +1,68 @@
-.login {
-  margin: 0;
-  position: relative;
-  font-size: inherit;
-  font-weight: 800;
-  font-family: inherit;
-}
-.forgot-password-text {
-  width: 224px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-.admin-login,
-.enter-password-frame {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.enter-password-frame {
-  width: 500px;
-  flex-direction: column;
-  padding: 20px 0;
-  box-sizing: border-box;
-  gap: 63px 0;
-  min-width: 500px;
-  max-width: 100%;
-}
-.admin-login {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: #fff;
-  overflow: hidden;
-  flex-direction: row;
-  gap: 0 110px;
-  letter-spacing: normal;
-  text-align: left;
-  font-size: 50px;
-  color: #000;
-  font-family: Inter;
-}
-@media screen and (max-width: 1275px) {
-  .enter-password-frame {
+/* Default styles */
+.leftcontainer {
     flex: 1;
+    background: #F15B46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
   }
-  .admin-login {
-    flex-wrap: wrap;
+
+  .App{
+    display: flex; height: 100vh;gap:3%;justify-content: space-between;
   }
-}
-@media screen and (max-width: 750px) {
-  .login {
-    font-size: 40px;
+  .button-login {
+    background-color: #F15B46;
+    color: white;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none; /* Remove the border */
+    border-radius: 10px; /* Make the edges round */
   }
-  .enter-password-frame {
-    gap: 63px 0;
-    min-width: 100%;
+  
+  .rightcontainer{
+    flex: 1;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+       gap:3%;
+       margin-right: 2%;
   }
-  .admin-login {
-    gap: 0 110px;
+  
+  .Logintext{
+    text-align: center; margin-bottom: 20px;
   }
-}
-@media screen and (max-width: 450px) {
-  .login {
-    font-size: 30px;
+  .Form{
+    max-width: 500px; width: 80%; 
   }
-  .enter-password-frame {
-    gap: 63px 0;
+  /* Media query for mobile devices (max-width: 768px) */
+  @media (max-width: 768px) {
+    .leftcontainer {
+      display: none;
+    }
+    .button-login {
+      background-color: black;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      border: none; /* Remove the border */
+      border-radius: 10px; /* Make the edges round */
+    }
+
+    .App{
+      display: flex; height: 100vh;gap:3%;justify-content: space-between;
+      background-color: #F15B46;
+    }
+    .Logintext{
+      text-align: center; 
+      margin-bottom: 20px;
+      color: white !important; /* Set text color to white */
   }
-  .admin-login {
-    gap: 0 110px;
+  
+  .Form{
+    max-width: 500px; width: 90%; 
   }
-}
+    
+  }
+  
