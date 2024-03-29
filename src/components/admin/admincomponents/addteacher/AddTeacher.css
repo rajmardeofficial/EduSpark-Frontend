@@ -8,7 +8,7 @@
     height: 50px;
 }
 .navHeader{
-    height: 55px;
+    height: 52px;
     width: 100%;
     display: inline-flex;
     align-items: center;
@@ -21,6 +21,8 @@
     max-width: 33%;
     width: 31%;
     margin-left: 10px;
+    background-color: #FFFFFF;
+    ;
 
 }
 .buttonOfAdd {
