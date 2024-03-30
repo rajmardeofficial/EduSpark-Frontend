@@ -9,6 +9,52 @@ export const setCurrentDataType = (fields) => async (dispatch) => {
   }
 }
 
+// for getting key
+// getKey
+export const getKey = async (dispatch) => {
+  try {
+    console.log("hello key");
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/getkey`, {
+      method: "get",
+    });
+    result = await result.json();
+    
+    if (result?.key) {
+      // dispatch(authGetKey(result?.key));
+      return result?.key;
+    } else {
+      dispatch(authFailed("Failed to get key"));
+      throw new Error("Failed to get key");
+    }
+  } catch (error) {
+    console.error("Network Error:", error);
+    dispatch(authError("Network Error."));
+    throw error;
+  }
+};
+
+export const getCheckoutHandler = async (dispatch, amount) => {
+  try {
+    console.log(amount);
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/checkout`, {
+      method: "post",
+      body: JSON.stringify({ amount }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    
+    if (result) {
+      return result;
+    }
+  } catch (error) {
+    console.error("Network Error:", error);
+    dispatch(authError("Network Error."));
+    throw error;
+  }
+};
+
 export const addStudent = (fields) => async (dispatch) => {
   dispatch(authRequest());
   try {

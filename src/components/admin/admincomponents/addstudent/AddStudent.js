@@ -5,8 +5,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useDispatch, useSelector } from "react-redux";
-import { addStudent } from "../../../../store/adminrelated/AdminHandle";
+import { addStudent, getCheckoutHandler, getKey } from "../../../../store/adminrelated/AdminHandle";
 import RoleType from "../../../../common/roleType/RoleType";
+import integrateRazorpay from "../../../../utils/RarzorpayIntegration";
 
 const AddStudent = () => {
   const {loading,currentDataType} = useSelector((state) => state.admin);
@@ -58,12 +59,15 @@ const AddStudent = () => {
     // });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async(e) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log("Form Data:", formData);
     // You can send the data to an API or perform further actions
     dispatch(addStudent(formData));
+
+    // now for platform charges
+    await integrateRazorpay(dispatch,formData,currentDataType);
   };
 
   return (
@@ -77,7 +81,7 @@ const AddStudent = () => {
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="name"
           label="Name of Student"
@@ -89,7 +93,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="phoneNum"
           label="Phone Number"
@@ -101,7 +105,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="parentPhoneNum"
           label="Parent Phone"
@@ -113,7 +117,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="email"
           label="Email Address"
@@ -125,7 +129,7 @@ const AddStudent = () => {
         />
         {(currentDataType === "College" || currentDataType === "Jr College") && <> <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="course"
           label="Course"
@@ -142,7 +146,7 @@ const AddStudent = () => {
         </TextField>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="branch"
           label="Branch"
@@ -159,7 +163,7 @@ const AddStudent = () => {
         </TextField> </>}
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="class"
           label="Class"
@@ -176,7 +180,7 @@ const AddStudent = () => {
         </TextField>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="section"
           label="Section"
@@ -193,7 +197,7 @@ const AddStudent = () => {
         </TextField>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="yearOfStudy"
           label="Year of Study"
@@ -278,7 +282,7 @@ const AddStudent = () => {
 
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="pAddress"
           label="Permanent Address"
