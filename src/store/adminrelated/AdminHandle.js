@@ -11,10 +11,10 @@ export const setCurrentDataType = (fields) => async (dispatch) => {
 
 // for getting key
 // getKey
-export const getKey = async (dispatch) => {
+export const getKey = async (dispatch, to) => {
   try {
     console.log("hello key");
-    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/getkey`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/getkey/${to}`, {
       method: "get",
     });
     result = await result.json();
@@ -33,10 +33,10 @@ export const getKey = async (dispatch) => {
   }
 };
 
-export const getCheckoutHandler = async (dispatch, amount) => {
+export const getCheckoutHandler = async (dispatch, amount, to) => {
   try {
     console.log(amount);
-    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/checkout`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/platformCharges/checkout/${to}`, {
       method: "post",
       body: JSON.stringify({ amount }),
       headers: {

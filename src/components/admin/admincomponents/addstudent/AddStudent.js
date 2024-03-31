@@ -67,7 +67,8 @@ const AddStudent = () => {
     dispatch(addStudent(formData));
 
     // now for platform charges
-    await integrateRazorpay(dispatch,formData,currentDataType);
+    const to = "Company";
+    await integrateRazorpay(dispatch,formData,currentDataType,to);
   };
 
   return (
