@@ -14,7 +14,16 @@
     align-items: center;
     justify-content: center;
     background-color: #F15B46;
-    /* margin-bottom: px; */
+    
+}
+.navHeaderForTeaAndStd{
+    height: 87px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F15B46;
+    margin-bottom: 14px;
     
 }
 .componentGrid .textField{
@@ -22,7 +31,6 @@
     width: 31%;
     margin-left: 10px;
     background-color: #FFFFFF;
-    ;
 
 }
 .buttonOfAdd {

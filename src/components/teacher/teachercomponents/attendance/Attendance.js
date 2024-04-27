@@ -84,7 +84,7 @@ const Attendance = () => {
   return (
     <>
       <div className="studentComponent">
-        <div className="navHeader">
+        <div className="navHeaderForTeaAndStd">
           <h1>Attendance </h1>
         </div>
         <form

@@ -2,8 +2,10 @@ import React from "react";
 
 const TeacherHome = () => {
   return (
-    <div className="navHeader">
-      <h1>Teacher Home</h1>
+    <div className="studentComponent">
+      <div className="navHeaderForTeaAndStd">
+        <h1>Teacher Home</h1>
+      </div>
     </div>
   );
 };

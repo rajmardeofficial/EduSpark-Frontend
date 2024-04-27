@@ -7,7 +7,9 @@ import RoleType from "../../../../common/roleType/RoleType";
 const AddAdminAccount = () => {
   const { loading } = useSelector((state) => state.admin);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
     email: "",
     phoneNum: "",
     password: "",
@@ -56,15 +58,37 @@ const AddAdminAccount = () => {
       <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
+      <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="firstName"
+          label="First Name Of Admin"
+          name="firstName"
+          autoComplete="firstName"
+          autoFocus
+          className="textField"
+          onChange={handleOnChange}
+        />
         <TextField
           margin="normal"
           required
           fullWidth
-          id="name"
-          label="Name of Admin"
-          name="name"
-          autoComplete="name"
-          autoFocus
+          id="middleName"
+          label="Middle Name Of Admin"
+          name="middleName"
+          autoComplete="middleName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="lastName"
+          label="Last Name Of Admin"
+          name="lastName"
+          autoComplete="lastName"
           className="textField"
           onChange={handleOnChange}
         />

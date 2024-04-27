@@ -60,7 +60,7 @@ const ScheduleTest = () => {
     };
   return (
     <div className="studentComponent">
-      <div className="navHeader">
+      <div className="navHeaderForTeaAndStd">
         <h1>Schedule Test</h1>
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>

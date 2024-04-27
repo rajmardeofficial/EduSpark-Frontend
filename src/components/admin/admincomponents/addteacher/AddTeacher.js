@@ -13,7 +13,9 @@ const AddTeacher = () => {
   const {loading,currentDataType} = useSelector((state) => state.admin);
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    middleName:"",
+    lastName:"",
     phoneNum: "",
     email: "",
     qualification: "",
@@ -72,15 +74,37 @@ const AddTeacher = () => {
       <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
+      <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="firstName"
+          label="First Name Of Teacher"
+          name="firstName"
+          autoComplete="firstName"
+          autoFocus
+          className="textField"
+          onChange={handleOnChange}
+        />
         <TextField
           margin="normal"
           required
           fullWidth
-          id="name"
-          label="Name of Teacher"
-          name="name"
-          autoComplete="name"
-          autoFocus
+          id="middleName"
+          label="Middle Name Of Teacher"
+          name="middleName"
+          autoComplete="middleName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="lastName"
+          label="Last Name Of Teacher"
+          name="lastName"
+          autoComplete="lastName"
           className="textField"
           onChange={handleOnChange}
         />

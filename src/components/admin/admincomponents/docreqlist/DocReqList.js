@@ -9,7 +9,9 @@ import RoleType from '../../../../common/roleType/RoleType';
 const DocReqList = () => {
   const { loading } = useSelector((state) => state.admin);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
     status: "",
     documentType: "",
     date:"",
@@ -55,13 +57,35 @@ const DocReqList = () => {
     <form className="componentGrid" onSubmit={handleFormSubmit}>
     <TextField
           margin="normal"
-          required
+          // required
           fullWidth
-          id="name"
-          label="Name of Student"
-          name="name"
-          autoComplete="name"
+          id="firstName"
+          label="First Name Of Student"
+          name="firstName"
+          autoComplete="firstName"
           autoFocus
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          // required
+          fullWidth
+          id="middleName"
+          label="Middle Name Of Student"
+          name="middleName"
+          autoComplete="middleName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          // required
+          fullWidth
+          id="lastName"
+          label="Last Name Of Student"
+          name="lastName"
+          autoComplete="lastName"
           className="textField"
           onChange={handleOnChange}
         />

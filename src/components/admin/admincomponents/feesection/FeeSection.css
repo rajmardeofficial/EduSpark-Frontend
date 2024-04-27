@@ -1,29 +1,132 @@
-.feeSectionButton{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-left: 14px;
-    margin-top: 10px;
-    gap: 25px;
+.feeSectionButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 14px;
+  margin-top: 20px;
+  gap: 25px;
+  margin-bottom: 25px;
 }
-.styleOfSelectedButton{
-    width: 153px;
-    height: 59px;
-    background-color: #F15B46;
-    color: #FFFFFF;
-    line-height: 19px;
-    font-size: 16px;
-    border: transparent;
-    border-radius: 4px;
+.styleOfSelectedButton {
+  width: 153px;
+  height: 49px;
+  background-color: #f15b46;
+  color: #ffffff;
+  line-height: 19px;
+  font-size: 16px;
+  border: transparent;
+  border-radius: 4px;
 }
 
-.styleOfUnselectedButton{
-    width: 153px;
-    height: 59px;
-    background-color: #FFFFFF;
-    color: #B1B1B1;
-    line-height: 19px;
-    font-size: 16px;
-    border: 1px solid #DBDBDB;
-    border-radius: 4px;
+.styleOfUnselectedButton {
+  width: 153px;
+  height: 49px;
+  background-color: #ffffff;
+  color: #b1b1b1;
+  line-height: 19px;
+  font-size: 16px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
 }
+
+.feeSectionButtonInsight{
+  margin-left: 82px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+.feeInsight {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.CardsOfFeeSection {
+  max-width: 80%;
+  height: 430px;
+  display: flex;
+  gap: 20px;
+}
+
+.piechartChartCard {
+  height: 430px;
+  width: 430px;
+  background-color: #ffffff;
+}
+
+.apx-legend-position-right {
+  display: none !important;
+}
+
+.textShowDiv {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 10%;
+}
+.smallRectangleRed {
+  height: 20px;
+  width: 20px;
+  background-color: #f15b46;
+}
+.smallRectangleBlack {
+  height: 20px;
+  width: 20px;
+  background: #232531;
+}
+.smallRectangleWhite {
+  height: 20px;
+  width: 20px;
+  background: #6e8192;
+}
+.monthFeeCollectionCard{
+    padding-top: 40px;
+    display: flex;
+    height: 430px;
+    width: 430px;
+    background: #232531;
+    flex-direction: column;
+    gap: 50px;
+}
+.monthRevenue{
+    display: flex;
+    margin-left: 10%;
+    flex-direction: column;
+    gap: 12px;
+}
+.FeeCollectionInRuppe{
+  height: 84px;
+  width: 283px;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 84px;
+  color: #f15b46;
+}
+.textOfMonthFeeCollectionCard{
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21.78px;
+}
+
+@media screen and (max-width: 1100px) {
+    .FeeCollectionInRuppe {
+      height: 84px;
+      width: 283px;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 84px;
+      color: #f15b46;
+    }
+  }
+
+  @media screen and (min-width: 1450px) and (max-width: 1500px) {
+    .feeSectionButtonInsight {
+      margin-left: 64px;
+    }
+  }
+  

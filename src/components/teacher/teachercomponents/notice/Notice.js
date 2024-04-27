@@ -46,7 +46,7 @@ const Notice = () => {
   return (
     <>
       <div className="studentComponent">
-        <div className="navHeader">
+        <div className="navHeaderForTeaAndStd">
           <h1>Notice </h1>
         </div>
         {!openNotice ? <form className="componentGrid" onSubmit={handleToAddNotice}>

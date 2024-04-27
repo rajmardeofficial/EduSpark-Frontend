@@ -9,6 +9,15 @@ export const setCurrentDataType = (fields) => async (dispatch) => {
   }
 }
 
+export const getFlatformFee = (collegeId) => async(dispatch) => {
+  try {
+    console.log(collegeId);
+  } catch (error) {
+    console.error("Network Error:", error);
+    dispatch(authError("Network Error."));
+  }
+}
+
 // for getting key
 // getKey
 export const getKey = async (dispatch, to) => {

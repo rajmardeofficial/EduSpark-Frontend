@@ -48,7 +48,7 @@ const AddMarks = () => {
   return (
     <>
       <div className="studentComponent">
-        <div className="navHeader">
+        <div className="navHeaderForTeaAndStd">
           <h1>Add Marks </h1>
         </div>
         <form

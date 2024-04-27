@@ -83,7 +83,7 @@ const feeSectionDashboardOfAdmin = (cellIndex, cell) => {
     return (
       <td key={cellIndex}>
         <p
-          style={{ backgroundColor: cell === "Not Paid" ? "#D30B0B" : "#64C15C" }}
+          style={{ backgroundColor: cell === "Not Paid" ? "#D30B0B" : cell === "Paid"?"#64C15C": "#F2BF3C" }}
           className="paymetStatusOfFeeSection"
         >
           {cell}
