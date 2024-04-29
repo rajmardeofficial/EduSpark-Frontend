@@ -1,0 +1,174 @@
+.noticeComponentDiv {
+  margin-left: 9px;
+  display: grid;
+  grid-template-columns: 30% 66.7%;
+  gap: 1%;
+}
+.selectAuthority {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-left: 25px;
+  width: 100%;
+}
+.authorityList {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.authorityNameColor {
+  height: 44px;
+  width: 90%;
+  border-radius: 9px;
+  padding: 10px 10px 10px 15px;
+  background: #f15b46;
+  color: #ffffff;
+}
+.authorityName {
+  height: 44px;
+  width: 90%;
+  border-radius: 9px;
+  padding: 10px;
+  color: #000000;
+  opacity: 40%;
+}
+.authNamePtag {
+  font-weight: 500px;
+  size: 17px;
+  line-height: 23.8px;
+}
+.onlyNoticeOuterDiv {
+  border-radius: 10px;
+  padding-left: 25px;
+  margin-bottom: 50px;
+}
+.latestNoticeDiv {
+  width: 100%;
+  height: 25%;
+  padding: 10px 10px 10px 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.divPartOfNoticeTotalDetail {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 9px;
+  padding: 10px 5px;
+}
+.profileImgInNotice {
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+.divPartOfNoticewithoutpic {
+  width: calc(100% - 80px);
+}
+.headerPartOfNotice {
+  width: 99%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.senderInNotice {
+  width: 83px;
+  height: 25px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+}
+.noticeSendDate {
+  width: 148px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 16px;
+  color: #000000;
+  opacity: 50%;
+}
+.noticeInformation {
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+.lastWeekOuterDiv {
+  padding: 10px 10px 10px 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.divPartOfNoticeTotalDetail:hover {
+  transition: background-color 0.3s, opacity 0.3s;
+  background-color: #d9d9d9;
+  opacity: 95%;
+}
+
+
+/* Another subcomponent */
+.ParticularNoticeOuterDiv{
+  min-height: 100%;
+  background-color: white;
+  margin-left: 10px;
+  border-radius: 9px;
+  padding: 10px 15px;
+}
+.noticeAndNamePart{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 18px;
+}
+.spanDivOfToShowNotice{
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    width: 50px;
+    height: 22px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 22px;
+    opacity: 0.4;
+}
+.arrowInNoticebetNoandNa{
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 18px;
+    width: 25px !important;
+    font-size: 18px !important; 
+    line-height: 22px !important;
+    color: #000000 !important;
+    opacity: 0.5 !important; 
+}
+.nameInParticularNotice{
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    height: 22px;
+    color: #000000;
+    font-size: 16px; 
+    line-height: 22px; 
+    font-weight: 400;
+}
+.backButtonNoticeee{
+    width: 110px;
+    height: 44px;
+    background-color: #f15b46;
+    border: none;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+.divPartOfNoticeTotalDetail1 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 9px;
+    padding: 10px 5px;
+  }

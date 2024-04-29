@@ -1,26 +1,43 @@
 import { InputAdornment, MenuItem, TextField, IconButton } from "@mui/material";
-import "./AddTeacher.css";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addStudent,
+  getCheckoutHandler,
+  getFlatformFee,
+  getKey,
+} from "../../../../store/adminrelated/AdminHandle";
+import RoleType from "../../../../common/roleType/RoleType";
+import integrateRazorpay from "../../../../utils/RarzorpayIntegration";
 
-const AddTeacher = () => {
+const AddStudent = () => {
+  const { loading, currentDataType } = useSelector((state) => state.admin);
+
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    middleName: "",
+    lastName: "",
     phoneNum: "",
+    parentPhoneNum: "",
     email: "",
-    qualification: "",
-    experience: "",
-    chooseclass: "",
-    specialty: "",
+    course: "",
+    branch: "",
+    class: "",
+    section: "",
+    yearOfStudy: "",
     photo: "",
     birth: "",
     pAddress: "",
     blood: "",
   });
+
+  const dispatch = useDispatch();
+  console.log(currentDataType);
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -40,95 +57,160 @@ const AddTeacher = () => {
     }));
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form Data:", formData);
-    // You can send the data to an API or perform further actions
-  };
-
   const handleFileChange = (e) => {
     e.preventDefault();
     const selectedFile = e.target.files[0];
-    setFileName(e.target.files[0]?.name)
+    setFileName(e.target.files[0]?.name);
     // setFormData({
     //   ...formData,
     //   photo: , // Update only if a file is selected
     // });
   };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form Data:", formData);
+    // You can send the data to an API or perform further actions
+    dispatch(addStudent(formData));
+
+    // now for platform charges
+    // const to = "CollegeDocumentFee";
+    // const collegeId = "0995465769870"
+    // // const amount = dispatch(getFlatformFee(collegeId));
+    // await integrateRazorpay(dispatch, formData, currentDataType, to);
+  };
+
   return (
     <div className="studentComponent">
       <div className="navHeader">
-        <h1>Add Teacher</h1>
+        <h1>Add Student</h1>
+      </div>
+      <div>
+        <RoleType roleType={"All Three"} />
       </div>
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
-          id="name"
-          label="Name of Teacher"
-          name="name"
-          autoComplete="name"
+          id="firstName"
+          label="First Name Of Student"
+          name="firstName"
+          autoComplete="firstName"
           autoFocus
           className="textField"
           onChange={handleOnChange}
         />
         <TextField
           margin="normal"
-          required
+          // required
+          fullWidth
+          id="middleName"
+          label="Middle Name Of Student"
+          name="middleName"
+          autoComplete="middleName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          // required
+          fullWidth
+          id="lastName"
+          label="Last Name Of Student"
+          name="lastName"
+          autoComplete="lastName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          // required
           fullWidth
           id="phoneNum"
           label="Phone Number"
           name="phoneNum"
           autoComplete="phoneNum"
+          type="Number"
           className="textField"
           onChange={handleOnChange}
         />
         <TextField
           margin="normal"
-          required
+          // required
+          fullWidth
+          id="parentPhoneNum"
+          label="Parent Phone"
+          name="parentPhoneNum"
+          autoComplete="parentPhoneNum"
+          type="Number"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          // required
           fullWidth
           id="email"
           label="Email Address"
           name="email"
+          type="email"
           autoComplete="email"
           className="textField"
           onChange={handleOnChange}
         />
+        {(currentDataType === "College" ||
+          currentDataType === "Jr College") && (
+          <>
+            {" "}
+            <TextField
+              margin="normal"
+              // required
+              fullWidth
+              id="course"
+              label="Course"
+              name="course"
+              autoComplete="course"
+              className="textField"
+              select
+              value={formData.course}
+              onChange={handleOnChange}
+            >
+              <MenuItem value="Btech">Btech</MenuItem>
+              <MenuItem value="class2">Class 2</MenuItem>
+              <MenuItem value="class3">Class 3</MenuItem>
+            </TextField>
+            <TextField
+              margin="normal"
+              // required
+              fullWidth
+              id="branch"
+              label="Branch"
+              name="branch"
+              autoComplete="branch"
+              className="textField"
+              select
+              value={formData.branch}
+              onChange={handleOnChange}
+            >
+              <MenuItem value="branch1">branch 1</MenuItem>
+              <MenuItem value="branch2">branch 2</MenuItem>
+              <MenuItem value="branch3">branch 3</MenuItem>
+            </TextField>{" "}
+          </>
+        )}
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
-          id="qualification"
-          label="Qualification"
-          name="qualification"
-          autoComplete="qualification"
-          className="textField"
-          onChange={handleOnChange}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="experience"
-          label="Year of Experience"
-          name="experience"
-          autoComplete="experience"
-          className="textField"
-          onChange={handleOnChange}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="chooseclass"
-          label="Teaching Class"
-          name="chooseclass"
-          autoComplete="chooseclass"
+          id="class"
+          label="Class"
+          name="class"
+          autoComplete="class"
           className="textField"
           select
-          value={formData.chooseclass}
+          value={formData.class}
           onChange={handleOnChange}
         >
           <MenuItem value="class1">Class 1</MenuItem>
@@ -137,20 +219,43 @@ const AddTeacher = () => {
         </TextField>
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
-          id="specialty"
-          label="Subject Specialty"
-          name="specialty"
-          autoComplete="specialty"
+          id="section"
+          label="Section"
+          name="section"
+          autoComplete="section"
           className="textField"
+          select
+          value={formData.section}
           onChange={handleOnChange}
-        />
+        >
+          <MenuItem value="A"> A</MenuItem>
+          <MenuItem value="B"> B</MenuItem>
+          <MenuItem value="C"> C</MenuItem>
+        </TextField>
+        <TextField
+          margin="normal"
+          // required
+          fullWidth
+          id="yearOfStudy"
+          label="Year of Study"
+          name="yearOfStudy"
+          autoComplete="yearOfStudy"
+          className="textField"
+          select
+          value={formData.yearOfStudy}
+          onChange={handleOnChange}
+        >
+          <MenuItem value="2020">2020</MenuItem>
+          <MenuItem value="class2">Class 2</MenuItem>
+          <MenuItem value="class3">Class 3</MenuItem>
+        </TextField>
         <TextField
           margin="normal"
           fullWidth
           label="Upload Photo"
-          value={fileName} 
+          value={fileName}
           disabled
           InputProps={{
             endAdornment: (
@@ -176,14 +281,15 @@ const AddTeacher = () => {
           className="textField"
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker style={{color:"black !important",border:"19px solid black"}}
+          <DatePicker
+            style={{ color: "black !important", border: "19px solid black" }}
             value={formData.birth}
             onChange={(value) => handleOnChangeForDate(value)}
             sx={{
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  border: '1px solid black !important',
-                  opacity:"0.3"
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "1px solid black !important",
+                  opacity: "0.3",
                 },
               },
             }}
@@ -216,7 +322,7 @@ const AddTeacher = () => {
 
         <TextField
           margin="normal"
-          required
+          // required
           fullWidth
           id="pAddress"
           label="Permanent Address"
@@ -243,11 +349,11 @@ const AddTeacher = () => {
         </TextField>
 
         <button className="buttonOfAdd" type="submit">
-          Add Teacher
+          Add Student
         </button>
       </form>
     </div>
   );
 };
 
-export default AddTeacher;
+export default AddStudent;

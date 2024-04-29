@@ -1,0 +1,56 @@
+.tableData{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Optional: add margin between the table and other elements */
+  }
+  thead{
+    color: #707071;
+    height: 59px;
+    border-bottom: 2px solid gray;
+  }
+  th,td {
+    /* border: 1px solid black; */
+    padding-left: 14px;
+    text-align: left;
+    height: 59px;
+    color: #0F0F0F;
+  }
+
+    tr:nth-child(odd) {
+    background-color: #d9d9d9;
+
+  }
+  
+  th {
+    background-color: #fff;
+    
+  }
+
+  .paymetStatusOfFeeSection{
+    width: max-content;
+    padding:3px 12px 3px 12px;
+    border-radius: 19px;
+    color: #FFFFFF;
+  }
+  @media screen and (min-width: 500px) and (max-width: 680px){
+    table{
+      font-size: 12px;
+    }
+  }
+@media screen and (min-width: 320px) and (max-width: 590px){
+  table{
+    font-size: 11px;
+  }
+}
+@media screen and (max-width:359px){
+  table{
+    font-size: 9px;
+  }
+}

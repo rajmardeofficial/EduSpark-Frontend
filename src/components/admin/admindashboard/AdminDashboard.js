@@ -1,18 +1,6 @@
 import React, { useState } from "react";
-import { Box, CssBaseline, Toolbar, List } from "@mui/material";
-import {
-  styled,
-  Drawer as MuiDrawer,
-  AppBar as MuiAppBar,
-} from "@mui/material";
-
-import {
-  Divider,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Box, CssBaseline } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import {
   BrowserRouter as Router,
@@ -21,19 +9,27 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./AdminDashboard.css";
-import AddTeacher from "../addteacher/AddTeacher";
-import AdminHome from "../adminHome.js/AdminHome";
 import { PiStudent } from "react-icons/pi";
 import { GiTeacher } from "react-icons/gi";
-import { IoLibraryOutline } from "react-icons/io5"
+import { IoLibraryOutline } from "react-icons/io5";
 import { TbFileTypeDoc } from "react-icons/tb";
 import { TbBinaryTree2 } from "react-icons/tb";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { PiNotepadBold } from "react-icons/pi";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
-import ListIcon from '@mui/icons-material/List';
-import AddStudent from "../addstudent/AddStudent";
-
+import ListIcon from "@mui/icons-material/List";
+import AdminHome from "../admincomponents/adminHome.js/AdminHome";
+import AddStudent from "../admincomponents/addstudent/AddStudent";
+import AddTeacher from "../admincomponents/addteacher/AddTeacher";
+import AddLiberian from "../admincomponents/addliberian/AddLiberian";
+import AddDocFacilitates from "../admincomponents/adddocfacilitates/AddDocFacilitates";
+import AddClass from "../admincomponents/addclass/AddClass";
+import FeeSection from "../admincomponents/feesection/FeeSection";
+import Notice from "../admincomponents/notice/Notice";
+import AddAdminAccount from "../admincomponents/addadminaccount/AddAdminAccount";
+import DocReqList from "../admincomponents/docreqlist/DocReqList";
+import DrawerOfDashboard from "../../../common/drawer/DrawerOfDashboard";
+import RoleType from "../../../common/roleType/RoleType";
 
 const AdminDashboard = () => {
   const location = useLocation();
@@ -42,51 +38,7 @@ const AdminDashboard = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const drawerWidth = 240;
 
-  const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(["width", "margin"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    }),
-  }));
-
-  const Drawer = styled(MuiDrawer, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })(({ theme, open }) => ({
-    "& .MuiDrawer-paper": {
-      position: "relative",
-      whiteSpace: "nowrap",
-      width: drawerWidth,
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      boxSizing: "border-box",
-      ...(!open && {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up("sm")]: {
-          width: theme.spacing(9),
-        },
-      }),
-    },
-  }));
   const menuItems = [
     { to: "/", text: "Home", icon: HomeIcon },
     { to: "/addStudent", text: "Add Student", icon: PiStudent },
@@ -100,77 +52,36 @@ const AdminDashboard = () => {
     { to: "/addClass", text: "Add Class", icon: TbBinaryTree2 },
     { to: "/feesSection", text: "Fees Section", icon: FaMoneyBillTransfer },
     { to: "/notice", text: "Notice", icon: PiNotepadBold },
-    { to: "/addAdminAccount", text: "Add Admin Account", icon: MdOutlineAdminPanelSettings },
+    {
+      to: "/addAdminAccount",
+      text: "Add Admin Account",
+      icon: MdOutlineAdminPanelSettings,
+    },
     { to: "/docReqList", text: "Document Req List", icon: ListIcon },
   ];
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <Drawer
-          variant="permanent"
-          open={open}
-          sx={open ? styles.drawerStyled : styles.hideDrawer}
-        >
-          <div style={{ width: "235px" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100px",
-              }}
-            >
-              <div className="rectangleInClassDashboard"></div>
-            </div>
-            <Divider />
-            <div className="navList">
-              <List component="nav">
-                {menuItems.map((item, index) => (
-                  <ListItemButton key={index} component={Link} to={item.to}>
-                    <div
-                      className={
-                        location.pathname === item.to
-                          ? "linkInnerPart active"
-                          : "linkInnerPart"
-                      }
-                    >
-                      <div
-                        className="present"
-                        style={{
-                          background:
-                            location.pathname === item.to ? "#2d60ff" : "none",
-                        }}
-                      ></div>
-                      <ListItemIcon className="iconPart">
-                        {React.createElement(item.icon, {
-                          style: {
-                            fontWeight: "bolder",
-                            fontSize: "23px",
-                            color:
-                              location.pathname === item.to ? "#2d60ff" : "inherit",
-                          },
-                        })}
-                      </ListItemIcon>
-                      <ListItemText
-                        className="textAlignInLink"
-                        primary={item.text}
-                      />
-                    </div>
-                  </ListItemButton>
-                ))}
-              </List>
-            </div>
-          </div>
-        </Drawer>
 
+        <DrawerOfDashboard
+          open={open}
+          menuItems={menuItems}
+          location={location}
+        />
         <Box component="main" sx={styles.boxStyled}>
           <Routes>
             <Route path="/" element={<AdminHome />} />
             <Route path="/addStudent" element={<AddStudent />} />
             <Route path="/addTeacher" element={<AddTeacher />} />
-
-            {/* <Route path="*" element={<Navigate to="/adminhome" />} /> */}
+            <Route path="/addLiberian" element={<AddLiberian />} />
+            <Route path="/addDocFacilitates" element={<AddDocFacilitates />} />
+            <Route path="/addClass" element={<AddClass />} />
+            <Route path="/feesSection" element={<FeeSection />} />
+            <Route path="/notice" element={<Notice />} />
+            <Route path="/addAdminAccount" element={<AddAdminAccount />} />
+            <Route path="/docReqList" element={<DocReqList />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Box>
       </Box>

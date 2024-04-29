@@ -1,0 +1,57 @@
+.componentGridForReqDocument{
+    display: grid;
+    width: calc(100% - 80px);
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.requestDocumentDivs {
+    /* max-width: 33%; */
+    /* width: 31%; */
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    max-height: 100px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border: 3px solid rgba(17, 17, 19, 0.2);
+    border-radius: 4px;
+    margin-top: 30px;
+
+}
+.selectDoc{
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #707071;
+    margin-left: 16px;
+    margin-right: 10px;
+}
+.selecDocWithBackGround{
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #707071;
+    margin-left: 16px;
+    margin-right: 10px;
+    background: #F15B46;
+}
+.onlyNameOfDoc{
+    color: rgba(17, 17, 19, 0.8);
+    height: 22px;
+}
+.requestDocumentButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 49px 30px 30px;
+    padding: 13px 20px 13px 24px;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #F15B46;
+    border: transparent;
+    color:#FFFFFF;
+  }

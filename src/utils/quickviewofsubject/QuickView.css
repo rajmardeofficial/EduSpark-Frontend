@@ -1,0 +1,59 @@
+.quickViewOuterCard {
+  display: flex;
+  height: 505px;
+  width: 319px;
+  background-color: white;
+  border-radius: 9px;
+  flex-direction: column;
+  border: 1px solid #E2E2E2;
+}
+.quickViewTextDiv{
+  width: 100px;
+  height: 25px;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+.nameAndPercentageDiv{
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 7px;
+}
+.subjectNameSpan {
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}
+.subjectPercentageInGreen {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #008F39;
+}
+.flexEndPercentage{
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(0, 0, 0, 0.6);
+}
+.progressStyleDivInQuickView{
+  width: 100%;
+  background-color: #F0F0F0;
+  border-radius: 50px;
+}
+.subjectContainers {
+    display: flex;
+    margin-left: 25px;
+    margin-right: 25px;
+    flex-direction: column;
+    gap: 25px;
+    height: 430px;
+    overflow-x: hidden;
+}
+
+.subjectContainers::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  .subjectContainers::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+  }

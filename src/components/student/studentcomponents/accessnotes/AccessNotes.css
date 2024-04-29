@@ -1,0 +1,122 @@
+.subjectsInNotes {
+    margin-top: 10px;
+    width: calc(100% - 9px) !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    height: 50% !important;
+    margin-left: 9px;
+
+}
+.subjName{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+}
+.subjectInNote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 48px;
+    background-color: #FFFFFF;
+    margin-bottom: 23px;
+    border-radius: 4px;
+    border: 2px solid rgba(17, 17, 19, 0.4);
+    cursor: pointer;
+    color: rgba(17, 17, 19, 0.6);
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+/* particular subject Notes */
+.particularSubjectNotes{
+    display: flex;
+    width: calc(100% - 18px);
+    margin-left: 9px;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    padding: 30px;
+
+}
+.spanDivOfToShowNotes{
+    display: flex;
+    margin-bottom: 18px;
+    height: 22px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 22px;
+    opacity: 0.4;
+}
+.recentlyAddedNotes{
+    margin-top: 30px;
+    display: flex;
+    height: 25px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    margin-bottom: 27px;
+}
+.notesOuterDiv{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    padding: 11px 15px;
+    border: 1px solid #B7B7B7;
+    border-radius: 10px;
+    gap: 10px;
+    cursor: pointer;
+}
+.contentOfNotes{
+    display: flex;
+    flex-direction: column;
+}
+.imgOfNotes{
+    display: flex;
+    width: 111px;
+    height: 111px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+}
+.notesheading{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+}
+.notesDescription{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.8px;
+    color: #000000;
+    opacity: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.dateOfEveryNotesInParticularSN{
+    display: flex;
+    align-items: flex-end;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    opacity: 50%;
+    justify-content: flex-end;
+}
+.totalnotesOuterDiv{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.notesOuterDiv1{
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    padding: 11px 15px;
+    border: 1px solid #B7B7B7;
+    border-radius: 10px;
+    gap: 10px;
+    cursor: pointer;
+}

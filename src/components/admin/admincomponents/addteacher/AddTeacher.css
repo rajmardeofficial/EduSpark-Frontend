@@ -5,21 +5,32 @@
 .componentGrid{
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
+    height: 50px;
 }
 .navHeader{
-    height: 90px;
+    height: 52px;
     width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: #F15B46;
-    margin-bottom: 13px;
+    
+}
+.navHeaderForTeaAndStd{
+    height: 87px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F15B46;
+    margin-bottom: 14px;
     
 }
 .componentGrid .textField{
     max-width: 33%;
     width: 31%;
     margin-left: 10px;
+    background-color: #FFFFFF;
 
 }
 .buttonOfAdd {
