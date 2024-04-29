@@ -92,7 +92,7 @@ const AddStudent = () => {
       <form className="componentGrid" onSubmit={handleFormSubmit}>
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="firstName"
           label="First Name Of Student"
@@ -104,7 +104,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="middleName"
           label="Middle Name Of Student"
@@ -115,7 +115,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="lastName"
           label="Last Name Of Student"
@@ -126,7 +126,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="phoneNum"
           label="Phone Number"
@@ -138,7 +138,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="parentPhoneNum"
           label="Parent Phone"
@@ -150,7 +150,7 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="email"
           label="Email Address"
@@ -166,7 +166,7 @@ const AddStudent = () => {
             {" "}
             <TextField
               margin="normal"
-              // required
+              required
               fullWidth
               id="course"
               label="Course"
@@ -183,7 +183,7 @@ const AddStudent = () => {
             </TextField>
             <TextField
               margin="normal"
-              // required
+              required
               fullWidth
               id="branch"
               label="Branch"
@@ -202,7 +202,7 @@ const AddStudent = () => {
         )}
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="class"
           label="Class"
@@ -219,7 +219,7 @@ const AddStudent = () => {
         </TextField>
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="section"
           label="Section"
@@ -236,7 +236,7 @@ const AddStudent = () => {
         </TextField>
         <TextField
           margin="normal"
-          // required
+          required
           fullWidth
           id="yearOfStudy"
           label="Year of Study"

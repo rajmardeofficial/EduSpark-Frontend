@@ -1,0 +1,190 @@
+/* Adjust the overall layout */
+.loginCom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(90deg, #f15b46 50%, #FFFFFF 50%);
+}
+
+.leftPart {
+  flex: 1;
+  padding: 2rem;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.learning {
+  width: 70%;
+  height: 52vh;
+}
+
+.line {
+  margin-top: 40px;
+  width: 95%;
+  margin-bottom: 40px;
+  color: #FFFFFF;
+}
+.loginleftSideContentDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginleftSideContentP{
+  display: flex;
+  width: 87%;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+.rightPart {
+  flex: 1;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+.loginTitleContent{
+  font-weight: 600;
+  font-size:3.5vw;
+  /* line-height: 75px; */
+  margin-bottom: 10px;
+}
+.loginButton {
+  height: 52px;
+  width: 133px;
+  background-color: #f15b46;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  border: none;
+  padding: 0.6rem 1.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 50px;
+}
+
+.loginButton:hover {
+  background-color: #d64b37;
+}
+
+.forgotPassword {
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: right;
+}
+.link1 {
+  color: #2F82FF;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+.inputOfLogin{
+  width: 100% !important;
+  height: 60px !important;
+  border-radius: 5px !important;
+  margin-top: 18px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 22px !important; 
+}
+.selectLoginAs{
+  display: flex;
+  width: 35%;
+  height: 55px;
+  border: 1px solid #C5C5C5;
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23.5px;
+  color: #000000;
+  opacity: 65%;
+  margin-top: 20px;
+}
+
+/* reset component */
+.loginBackButton{
+  height: 52px;
+  width: 133px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  background-color: #232531;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border:none;
+  cursor: pointer;
+}
+.loginSendOtpButton{
+  height: 52px;
+  width: 133px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  border-radius: 5px;
+  background-color: #F15B46;
+  color: #FFFFFF;
+  border:none;
+  cursor: pointer;
+
+}
+
+
+@media screen and (max-width: 790px) {
+  .loginBackButton{
+    height: 40px;
+    width: 100px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .loginSendOtpButton{
+    height: 40px;
+    width: 100px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .loginTitleContent{
+    font-weight: 600;
+    font-size:35px;
+    margin-bottom: 10px;
+  }
+  .loginBackButton{
+    height: 40px;
+    width: 123px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .loginSendOtpButton{
+    height: 40px;
+    width: 123px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
