@@ -1,18 +1,20 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AdminDashboard from "./components/admin/admindashboard/AdminDashboard";
 import TeacherDashboard from "./components/teacher/teacherdashboard/TeacherDashboard";
 import StudentDashboard from "./components/student/studentdashboard/StudentDashboard";
-
+import Login from "./components/loginScreen/Login";
 function App() {
-  let role = "Student";
+  let role = "";
   return (
     <Router>
       {role === "Admin" && <AdminDashboard />}
       {role === "Teacher" && <TeacherDashboard />}
       {role === "Student" && <StudentDashboard/>}
 
-      {role === "" && <Routes></Routes>}
+      {role === "" && <Routes>
+        <Route path="/" element = {<Login/>} />
+        </Routes>}
     </Router>
   );
 }
