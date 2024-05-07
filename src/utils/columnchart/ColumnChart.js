@@ -62,7 +62,7 @@ const ColumnChart = () => {
   });
 
   return (
-    <div style={{backgroundColor:"white",width:"96%",marginLeft:"19px",borderRadius:"9px",marginTop:"20px"}}>
+    <div style={{backgroundColor:"white",width:"97%",marginLeft:"19px",borderRadius:"9px",marginTop:"20px"}}>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}

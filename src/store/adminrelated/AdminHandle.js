@@ -1,4 +1,4 @@
-import { authRequest, authSuccess, authFailed, authSetCurrentRoleType, authError } from "./AdminSlice";
+import { authRequest, authSuccess, authFailed, authSetCurrentRoleType, authError, authAddSuccess } from "./AdminSlice";
 
 export const setCurrentDataType = (fields) => async (dispatch) => {
   try {
@@ -64,20 +64,52 @@ export const getCheckoutHandler = async (dispatch, amount, to) => {
   }
 };
 
-export const addStudent = (fields) => async (dispatch) => {
+export const addStudent = (fields,currentUser) => async (dispatch) => {
   dispatch(authRequest());
+  const {roleType} = fields;
+  console.log(roleType);
   try {
     console.log(fields);
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/admin/add-student/${roleType}`,{
+      method:"post",
+      body:JSON.stringify(fields),
+      headers: {
+        "Content-Type":"application/json",
+        Authorization: `${currentUser?.token}`,
+      }
+    })
+    result = await result.json();
+    if(result?.message === "Student added successfully"){
+      dispatch(authAddSuccess(result?.message));
+    }else{
+      dispatch(authFailed(result?.message));
+    }
   } catch (error) {
     console.log(error);
     dispatch(authError(error?.message));
   }
 };
 
-export const addTeacher = (fields) => async (dispatch) => {
+export const addTeacher = (fields,currentUser) => async (dispatch) => {
+  const {roleType} = fields;
   dispatch(authRequest());
+  console.log(roleType);
   try {
     console.log(fields);
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/admin/add-teacher/${roleType}`,{
+      method:"post",
+      body:JSON.stringify(fields),
+      headers: {
+        "Content-Type":"application/json",
+        Authorization: `${currentUser?.token}`,
+      }
+    })
+    result = await result.json();
+    if(result?.message === "Teacher added successfully"){
+      dispatch(authAddSuccess(result?.message));
+    }else{
+      dispatch(authFailed(result?.message));
+    }
   } catch (error) {
     console.log(error);
     dispatch(authError(error?.message));

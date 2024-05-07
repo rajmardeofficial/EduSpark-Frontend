@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LinearProgress, Box } from '@mui/material';
 
-const MonthCardAttPer = () => {
-    const [progress, setProgress] = useState(85);
+const MonthCardAttPer = ({currMonPreAtt}) => {
+    const [progress, setProgress] = useState(0);
+    useEffect(() => {
+      setProgress(parseFloat(currMonPreAtt));
+    },[currMonPreAtt]);
   return (
     <Box
       sx={{

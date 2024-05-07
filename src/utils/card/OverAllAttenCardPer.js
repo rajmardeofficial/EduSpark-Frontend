@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, LinearProgress } from "@mui/material";
+import { AttendancePer } from "../AttendancePer";
 
-const OverAllAttenCardPer = () => {
-  const [progress, setProgress] = useState(80);
+const OverAllAttenCardPer = ({listOfAllAttendanceOfStudent}) => {
+  const [progress, setProgress] = useState(0);
+
+
+  useEffect(() => {
+    let presentDayInNo = listOfAllAttendanceOfStudent.filter((attend) => {
+      return attend.isPresent === true;
+    });
+    const data = AttendancePer(listOfAllAttendanceOfStudent?.length,presentDayInNo?.length);
+    setProgress(parseFloat(data));
+  },[listOfAllAttendanceOfStudent]);
 
   return (
     <Box

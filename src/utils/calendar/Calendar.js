@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
@@ -7,6 +7,8 @@ import "./Calendar.css";
 import Badge from "@mui/material/Badge";
 import { PickersDay } from "@mui/x-date-pickers/PickersDay";
 import { DayCalendarSkeleton } from "@mui/x-date-pickers/DayCalendarSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { getattendanceofparticularmonth } from "../../store/studentrelated/StudentHandle";
 
 // import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
@@ -37,43 +39,91 @@ function ServerDay(props) {
 }
 
 const Calendar = () => {
+  const {currentUser} = useSelector((state) => state.role);
+  const { listOfAllSubject,listOfCurrentMonthAttendance, } = useSelector((state) => state.student);
   const [isLoading, setIsLoading] = useState(false);
+  const [subjectId, setSubjectId] = useState("");
   const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
   const [selectedOption, setSelectedOption] = useState("");
-  const highlightedDays = [2, 3, 4, 6, 10, 11,15,16,17,18];
+  const [highlightedDays, setHighlightedDays] = useState([]);
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
     console.log(event.target.value);
-  };
-
-  const fetchHighlightedDays = async (date) => {
-    setIsLoading(false);
+    setSubjectId(event.target.value);
   };
 
   const handleMonthChange = (newDate) => {
-    console.log(newDate);
     setSelectedDate(newDate);
-    fetchHighlightedDays(newDate);
+    
   };
   const handleDateChange = (newDate) => {
     console.log(newDate);
     setSelectedDate(newDate);
-    fetchHighlightedDays(newDate);
   };
 
+  useEffect(() => {
+    if (selectedDate) {
+      if((subjectId === "" || subjectId === undefined) && currentUser?.roleType !== "School"){
+        console.log("hsdufh");
+        return;
+      }else{
+        const monthNumber = selectedDate.month();
+        const year = selectedDate.year();
+        const currentMonth = dayjs().month(monthNumber).format("MMMM");
+        console.log(currentMonth,year);
+        const roleType = currentUser?.roleType;
+        const fields = {roleType,subjectId, currentMonth, year};
+        console.log(fields);
+        dispatch(getattendanceofparticularmonth(fields,currentUser));
+      }
+    }
+  },[selectedDate,subjectId])
+
+  useEffect(() => {
+    const attendanceDates = listOfCurrentMonthAttendance.flatMap(item =>
+      item.attendance
+        .filter(record => record.isPresent)
+        .map(record => record.date)
+    );
+    console.log(attendanceDates);
+    
+    console.log(attendanceDates);
+    const days = attendanceDates?.map(dateString => {
+      const date = new Date(dateString);
+      return date?.getDate();
+    });
+    setHighlightedDays(days);
+  },[listOfCurrentMonthAttendance]);
+  
   return (
     <>
-      <div style={{ backgroundColor: "#fff",maxHeight:"523px",width:"100%",borderRadius:"9px" }}>
-        <div className="selectSubjectDiv">
-          <select value={selectedOption} onChange={handleChange} className="selectSubjectOfCalendar">
+      <div
+        style={{
+          backgroundColor: "#fff",
+          maxHeight: "523px",
+          width: "100%",
+          borderRadius: "9px",
+        }}
+      >
+       {currentUser?.roleType !== "School" && <div className="selectSubjectDiv">
+          <select
+            value={selectedOption}
+            onChange={handleChange}
+            className="selectSubjectOfCalendar"
+          >
             <option value="">Select Subject</option>
-            <option value="math">Math</option>
-            <option value="science">Science</option>
-            <option value="history">History</option>
-            {/* Add more options as needed */}
+            {listOfAllSubject &&
+              listOfAllSubject?.map((subject, index) => {
+                return (
+                  <option value={subject?._id} key={index}>
+                    {subject?.name}
+                  </option>
+                );
+              })}
           </select>
-        </div>{" "}
+        </div>}{" "}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StaticDatePicker
             value={selectedDate}

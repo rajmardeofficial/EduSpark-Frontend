@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, CssBaseline} from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
@@ -26,15 +26,21 @@ import Notice from "../studentcomponents/notice/Notice";
 import TrackProgress from "../studentcomponents/trackprogress/TrackProgress";
 import Fees from "../studentcomponents/fees/Fees";
 import ParticularSubjectNotes from "../studentcomponents/accessnotes/components/ParticularSubjectNotes";
+import { useDispatch, useSelector } from "react-redux";
+import { GetAllSubjectOfStudent } from "../../../store/studentrelated/StudentHandle";
 
 const StudentDashboard = () => {
+    const {currentUser} = useSelector((state) => state.role);
     const location = useLocation();
     const navigate = useNavigate();
     const [open, setOpen] = useState(true);
+    const dispatch = useDispatch();
+
     const toggleDrawer = () => {
       setOpen(!open);
     };
-  
+    
+    
     const menuItems = [
         { to: "/", text: "Home", icon: HomeIcon },
         { to: "/attendance", text: "Attendance", icon: PiStudent },
@@ -49,6 +55,10 @@ const StudentDashboard = () => {
         { to: "/accessNotes", text: "Access Notes", icon: PiNotePencilBold },
         { to: "/fees", text: "Fees", icon: FaMoneyBillTransfer },
       ];
+      
+      useEffect(() => {
+        dispatch(GetAllSubjectOfStudent(currentUser));
+      },[])
   return (
     <Box sx={{ display: "flex" }}>
     <CssBaseline />
