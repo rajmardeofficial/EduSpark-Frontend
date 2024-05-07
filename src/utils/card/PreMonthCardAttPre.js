@@ -1,8 +1,8 @@
-import { Box, LinearProgress, colors } from "@mui/material";
-import { useState } from "react";
+import { Box } from "@mui/material";
+import { useEffect, useState } from "react";
 // import "./Card.css"
 
-const PreMonthCardAttPre = () => {
+const PreMonthCardAttPre = ({preMonPreAtt}) => {
   const [progress, setProgress] = useState(75);
 
   const progressStyle = {
@@ -13,6 +13,10 @@ const PreMonthCardAttPre = () => {
     borderBottomLeftRadius: "50px",
     transition: "width 0.3s ease-in-out",
   };
+
+  useEffect(() => {
+    setProgress(parseFloat(preMonPreAtt));
+  },[preMonPreAtt]);
 
   return (
     <Box

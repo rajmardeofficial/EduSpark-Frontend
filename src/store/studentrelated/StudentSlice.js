@@ -6,6 +6,10 @@ const initialState = {
     loading: false,
     response:null,
     error:null,
+    listOfAllSubject:[],
+    listOfAllAttendanceOfStudent:[],
+    listOfCurrentMonthAttendance:[],
+    listOfPreviousMonthAttendance:[],
     docsListOfStudent:[],
 
 }
@@ -39,10 +43,24 @@ const studentSlice = createSlice({
             state.status = "success";
             state.response = action.payload;
           },
+          authGetListOfSubject: (state, action) => {
+            state.loading = false;
+            state.listOfAllSubject = action.payload;
+          },
+          authGetTotalAttendanceOfStudent: (state, action) => {
+            state.loading = false;
+            state.listOfAllAttendanceOfStudent = action.payload;
+          },
+          authGetAttendanceOfParSubAndMonth:(state, action) => {
+            state.loading = false;
+            state.listOfCurrentMonthAttendance = action.payload?.currentMonthAttendance;
+            state.listOfPreviousMonthAttendance = action.payload?.previousMonthAttendance;
+          },
           authGetDocsOfStudent: (state, action) => {
             state.loading = false;
             state.docsListOfStudent = action.payload;
           },
+
     }
 });
 
@@ -52,6 +70,9 @@ export const {
     authError,
     authFailed,
     requestSuccess,
+    authGetListOfSubject,
+    authGetTotalAttendanceOfStudent,
+    authGetAttendanceOfParSubAndMonth,
     authGetDocsOfStudent,
     authLogout,
   } = studentSlice.actions;

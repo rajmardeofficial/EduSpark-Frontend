@@ -4,10 +4,10 @@ import { authRequest, authSuccess, authFailed, authError, authLogout } from "./F
 
 export const loginUser = (fields) => async (dispatch) => {
   const { email,password,role } = fields;
-  console.log(email, password);
+  console.log(email, password,role);
   dispatch(authRequest());
   try {
-    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/login${role}`, {
+    let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/login`, {
       method: "post",
       body: JSON.stringify({ email, password,role }),
       headers: {
@@ -16,7 +16,7 @@ export const loginUser = (fields) => async (dispatch) => {
     });
     result = await result.json();
     console.log(result);
-    if(result.email){
+    if(result?.token){
       dispatch(authSuccess(result));
     }else{
       dispatch(authFailed(result.message));

@@ -10,7 +10,8 @@ import { addTeacher } from "../../../../store/adminrelated/AdminHandle";
 import RoleType from "../../../../common/roleType/RoleType";
 
 const AddTeacher = () => {
-  const {loading,currentDataType} = useSelector((state) => state.admin);
+  const {currentUser} = useSelector((state) => state.role);
+  const {loading,status,response,currentDataType} = useSelector((state) => state.admin);
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -18,6 +19,7 @@ const AddTeacher = () => {
     lastName:"",
     phoneNum: "",
     email: "",
+    gender: "",
     qualification: "",
     experience: "",
     chooseclass: "",
@@ -26,8 +28,11 @@ const AddTeacher = () => {
     birth: "",
     pAddress: "",
     blood: "",
+    roleType:currentDataType,
   });
+  console.log(currentDataType);
   const dispatch = useDispatch();
+  console.log(currentDataType);
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -60,10 +65,14 @@ const AddTeacher = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    console.log(currentDataType);
+    formData.roleType = currentDataType;
     console.log("Form Data:", formData);
     // You can send the data to an API or perform further actions
-    dispatch(addTeacher(formData))
+    dispatch(addTeacher(formData,currentUser));
   };
+
+  console.log(loading,status,response);
 
   return (
     <div className="studentComponent">
@@ -88,7 +97,6 @@ const AddTeacher = () => {
         />
         <TextField
           margin="normal"
-          required
           fullWidth
           id="middleName"
           label="Middle Name Of Teacher"
@@ -132,6 +140,23 @@ const AddTeacher = () => {
           className="textField"
           onChange={handleOnChange}
         />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="gender"
+          label="Gender"
+          name="gender"
+          autoComplete="gender"
+          className="textField"
+          select
+          value={formData.gender}
+          onChange={handleOnChange}
+        >
+          <MenuItem value="Male">Male</MenuItem>
+          <MenuItem value="Female">Female</MenuItem>
+          <MenuItem value="Others">Others</MenuItem>
+        </TextField>
         <TextField
           margin="normal"
           required

@@ -1,12 +1,90 @@
-import { authRequest,authError, requestSuccess, authFailed, authGetDocsOfStudent, } from "./StudentSlice";
+import { authRequest,authError, requestSuccess, authFailed, authGetListOfSubject, authGetTotalAttendanceOfStudent, authGetAttendanceOfParSubAndMonth, authGetDocsOfStudent, } from "./StudentSlice";
 
 //Home api
 
 
 //Attendace api
+export const getAllAttendanceOfStudent = (fields,currentUser) => async(dispatch) => {
+    const {id} = currentUser;
+    const studentId = id;
+    dispatch(authRequest());
+    console.log(currentUser?.token,studentId,fields);
+    try {
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/student/getattendance/${studentId}`, {
+            method:"post",
+            body:JSON.stringify(fields),
+            headers: {
+                "Content-Type":"application/json",
+                Authorization: `${currentUser?.token}`,
+            }
+        })
+        result = await result.json();
+        if(result?.message === "Internal server error"){
+            dispatch(authFailed(result));
+        }else{
+            console.log(result);
+            dispatch(authGetTotalAttendanceOfStudent(result));
+        }
+
+    } catch (error) {
+        console.log(error);
+        dispatch(authError("Error"));
+    }
+}
+
+export const getattendanceofparticularmonth = (fields,currentUser) => async(dispatch) => {
+    const {id} = currentUser;
+    const studentId = id;
+    dispatch(authRequest());
+    try {
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/student/getattendanceofparticularmonth/${studentId}`,{
+            method:"Post",
+            body: JSON.stringify(fields),
+            headers: {
+                "Content-Type":"application/json",
+                Authorization: `${currentUser?.token}`,
+            }
+        })
+        result = await result.json();
+        if(result?.message === "Internal server error"){
+            dispatch(authFailed(result));
+        }else{
+            console.log(result);
+            dispatch(authGetAttendanceOfParSubAndMonth(result));
+        }
+        
+    } catch (error) {
+        console.log(error);
+        dispatch(authError("Error"));
+    }
+}
 
 
 //My Test api
+export const GetAllSubjectOfStudent = (currentUser) => async(dispatch) => {
+    const {roleType,id} = currentUser;
+    console.log(currentUser,roleType,id);
+    const studentId = id;
+    dispatch(authRequest());
+    try {
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/student/getallsubjectofstudent/${roleType}/${studentId}`,{
+            method:"get",
+            headers:{
+                "Content-Type":"application/json",
+                Authorization: `${currentUser?.token}`,
+            }
+        })
+        result = await result.json();
+        if(result?.message === "Internal server error"){
+            dispatch(authFailed(result));
+        }else{
+            dispatch(authGetListOfSubject(result));
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(authError("Error"));
+    }
+}
 
 
 //Documents api

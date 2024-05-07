@@ -24,6 +24,11 @@ const adminSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(action.payload));
       state.status = "success";
     },
+    authAddSuccess: (state, action) => {
+      state.loading = false;
+      state.status = "success";
+      state.response = action.payload;
+    },
     authFailed: (state, action) => {
       state.loading = false;
       state.status = "failed";
@@ -44,6 +49,7 @@ const adminSlice = createSlice({
 export const {
   authRequest,
   authSuccess,
+  authAddSuccess,
   authError,
   authFailed,
   authSetCurrentRoleType,

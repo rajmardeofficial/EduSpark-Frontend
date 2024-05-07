@@ -15,16 +15,20 @@ import RoleType from "../../../../common/roleType/RoleType";
 import integrateRazorpay from "../../../../utils/RarzorpayIntegration";
 
 const AddStudent = () => {
-  const { loading, currentDataType } = useSelector((state) => state.admin);
+  const { loading, currentDataType, currentUser } = useSelector(
+    (state) => state.admin
+  );
 
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
     lastName: "",
+    rollNo: "",
     phoneNum: "",
     parentPhoneNum: "",
     email: "",
+    gender: "",
     course: "",
     branch: "",
     class: "",
@@ -34,6 +38,7 @@ const AddStudent = () => {
     birth: "",
     pAddress: "",
     blood: "",
+    roleType: currentDataType,
   });
 
   const dispatch = useDispatch();
@@ -72,7 +77,7 @@ const AddStudent = () => {
     // Handle form submission logic here
     console.log("Form Data:", formData);
     // You can send the data to an API or perform further actions
-    dispatch(addStudent(formData));
+    dispatch(addStudent(formData, currentUser));
 
     // now for platform charges
     // const to = "CollegeDocumentFee";
@@ -104,7 +109,6 @@ const AddStudent = () => {
         />
         <TextField
           margin="normal"
-          required
           fullWidth
           id="middleName"
           label="Middle Name Of Student"
@@ -121,6 +125,17 @@ const AddStudent = () => {
           label="Last Name Of Student"
           name="lastName"
           autoComplete="lastName"
+          className="textField"
+          onChange={handleOnChange}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="rollNo"
+          label="Roll Number"
+          name="rollNo"
+          autoComplete="rollNo"
           className="textField"
           onChange={handleOnChange}
         />
@@ -160,6 +175,23 @@ const AddStudent = () => {
           className="textField"
           onChange={handleOnChange}
         />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="gender"
+          label="Gender"
+          name="gender"
+          autoComplete="gender"
+          className="textField"
+          select
+          value={formData.gender}
+          onChange={handleOnChange}
+        >
+          <MenuItem value="Male">Male</MenuItem>
+          <MenuItem value="Female">Female</MenuItem>
+          <MenuItem value="Others">Others</MenuItem>
+        </TextField>
         {(currentDataType === "College" ||
           currentDataType === "Jr College") && (
           <>
@@ -234,23 +266,25 @@ const AddStudent = () => {
           <MenuItem value="B"> B</MenuItem>
           <MenuItem value="C"> C</MenuItem>
         </TextField>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="yearOfStudy"
-          label="Year of Study"
-          name="yearOfStudy"
-          autoComplete="yearOfStudy"
-          className="textField"
-          select
-          value={formData.yearOfStudy}
-          onChange={handleOnChange}
-        >
-          <MenuItem value="2020">2020</MenuItem>
-          <MenuItem value="class2">Class 2</MenuItem>
-          <MenuItem value="class3">Class 3</MenuItem>
-        </TextField>
+        {currentDataType === "College" && (
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="yearOfStudy"
+            label="Year of Study"
+            name="yearOfStudy"
+            autoComplete="yearOfStudy"
+            className="textField"
+            select
+            value={formData.yearOfStudy}
+            onChange={handleOnChange}
+          >
+            <MenuItem value="2020">2020</MenuItem>
+            <MenuItem value="class2">Class 2</MenuItem>
+            <MenuItem value="class3">Class 3</MenuItem>
+          </TextField>
+        )}
         <TextField
           margin="normal"
           fullWidth

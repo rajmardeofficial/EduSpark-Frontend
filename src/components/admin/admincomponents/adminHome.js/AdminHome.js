@@ -1,7 +1,11 @@
 import React from "react";
 import "./AdminHome.css";
 import RoleType from "../../../../common/roleType/RoleType";
+import { useSelector } from "react-redux";
 const AdminHome = () => {
+  const {loading, currentDataType} = useSelector((state) => state.admin);
+  console.log(currentDataType);
+
   return (
     <>
       <div className="navHeader">

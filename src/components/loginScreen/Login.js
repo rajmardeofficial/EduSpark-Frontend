@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Learning from "../../assets/Learning.svg";
 import "./Login.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Reset from "./component/Reset";
+import { loginUser } from "../../store/formrelated/FormHandle";
 
-function Login() {
+function Login() { 
   const { loading } = useSelector((state) => state.role);
   const [loginpage, setLoginPage] = useState(true);
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function Login() {
     password: "",
   });
   const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -24,6 +26,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    dispatch(loginUser(formData));
+    
   };
 
   return (
@@ -58,9 +62,13 @@ function Login() {
                   onChange={onChangeHandler}
                 >
                   <option value="">Login as</option>
-                  <option value="Admin">Admin</option>
-                  <option value="Teacher">Teacher</option>
-                  <option value="Student">Student</option>
+                  <option value="admin">Admin</option>
+                  <option value="jrCollegeTeacher">JrCollegeTeacher</option>
+                  <option value="collegeTeacher">CollegeTeacher</option>
+                  <option value="schoolTeacher">SchoolTeacher</option>
+                  <option value="jrCollegeStudent">JrCollegeStudent</option>
+                  <option value="collegeStudent">CollegeStudent</option>
+                  <option value="schoolStudent">SchoolStudent</option>
                 </select>
               </div>
               <TextField
@@ -70,7 +78,6 @@ function Login() {
                 name="email"
                 value={formData.email}
                 onChange={onChangeHandler}
-                // autoFocus
               />
               <TextField
                 type={toggle ? "text" : "password"}
