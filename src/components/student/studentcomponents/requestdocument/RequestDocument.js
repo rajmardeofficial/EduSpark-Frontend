@@ -6,7 +6,8 @@ import integrateRazorpay from "../../../../utils/RarzorpayIntegration";
 import { getAllDocsOfStudent, sendDocsRequest } from "../../../../store/studentrelated/StudentHandle";
 
 const RequestDocument = () => {
-  const {status,response,docsListOfStudent} = useSelector((state) => state.student);
+  const {currentUser} = useSelector((state) => state.student);
+  const {loading,status,response,docsListOfStudent} = useSelector((state) => state.student);
   console.log(status,response);
 
   const [documents, setDocuments] = useState("");
@@ -27,25 +28,25 @@ const RequestDocument = () => {
   const handleDocsRequest = async () => {
     if (reqDocList?.length > 0 && totalAmount > 0) {
       console.log("both");
-      const to = "CollegeDocumentFee";
+      const to = "CollegeDocumentFee"; //it handle doc fee of college,jrcollegeand school
       const data = {
-        studentId: "661432f93bd0b5d35800b14a",
-        studentType: "College",
+        // studentId: "661432f93bd0b5d35800b14a",
+        studentType: currentUser?.roleType,
         amountPaid: totalAmount,
         datePaid: new Date(),
         documentsIds: reqDocList,
-        email: "alice.smith@example.com",
+        email: currentUser?.email,
       };
       await integrateRazorpay(dispatch, data, to);
 
     } else if (reqDocList?.length > 0) {
       const data = {
-        studentId: "661432f93bd0b5d35800b14a",
+        // studentId: "661432f93bd0b5d35800b14a",
         roleType: "College",
         documentsIds: reqDocList,
       };
       console.log(data);
-      dispatch(sendDocsRequest(data));
+      dispatch(sendDocsRequest(data,currentUser));
 
     } else {
       alert("At least select one document!");
@@ -69,10 +70,10 @@ const RequestDocument = () => {
 
   useEffect(() => {
     const fields = {
-      roleType: "College",
-      studentId: "661432f93bd0b5d35800b14a",
+      roleType: currentUser?.roleType,
+      studentId: currentUser?.id,
     }
-    dispatch(getAllDocsOfStudent(fields))
+    dispatch(getAllDocsOfStudent(fields,currentUser))
     if(docsListOfStudent?.length > 0){
       setDocuments(docsListOfStudent);
     }
@@ -118,7 +119,7 @@ const RequestDocument = () => {
           }}
         >
           <button className="requestDocumentButton" onClick={handleDocsRequest}>
-            Request Doc {reqDocList && `(Total Amount: ₹${totalAmount})`}
+          {loading ? "Loading" : `Request Doc ${reqDocList ? `(Total Amount: ₹${totalAmount})` : ''}`}
           </button>
         </div>
       </StyledDiv>

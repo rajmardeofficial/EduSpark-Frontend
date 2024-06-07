@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const PreMonthCardAttPre = ({preMonPreAtt}) => {
   const [progress, setProgress] = useState(75);
+  console.log(preMonPreAtt);
 
   const progressStyle = {
     height: "10px",
@@ -11,6 +12,8 @@ const PreMonthCardAttPre = ({preMonPreAtt}) => {
     width: `${progress}%`,
     borderTopLeftRadius: "50px", 
     borderBottomLeftRadius: "50px",
+    // borderTopRightRadius: "50px", 
+    // borderBottomRightRadius: "50px",
     transition: "width 0.3s ease-in-out",
   };
 

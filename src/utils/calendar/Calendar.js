@@ -66,7 +66,6 @@ const Calendar = () => {
   useEffect(() => {
     if (selectedDate) {
       if((subjectId === "" || subjectId === undefined) && currentUser?.roleType !== "School"){
-        console.log("hsdufh");
         return;
       }else{
         const monthNumber = selectedDate.month();
@@ -97,6 +96,7 @@ const Calendar = () => {
     setHighlightedDays(days);
   },[listOfCurrentMonthAttendance]);
   
+  console.log(listOfAllSubject);
   return (
     <>
       <div

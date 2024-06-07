@@ -77,6 +77,8 @@ const AddStudent = () => {
     // Handle form submission logic here
     console.log("Form Data:", formData);
     // You can send the data to an API or perform further actions
+    formData.roleType = currentDataType;
+    console.log(formData.roleType);
     dispatch(addStudent(formData, currentUser));
 
     // now for platform charges
