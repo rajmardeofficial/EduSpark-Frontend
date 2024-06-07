@@ -7,7 +7,7 @@ export const AttendancePer = (totalDay,presentDay) => {
 
 export const countsUniqueSubjectAttData = (attendanceData, subjectData) => {
     let subjects = {};
-    attendanceData.forEach(entry => {
+    attendanceData?.forEach(entry => {
         if (!subjects[entry.subject]) {
             subjects[entry.subject] = { subject: entry.subject, name: '', isPresentT: 0, isPresentF: 0 };
         }
