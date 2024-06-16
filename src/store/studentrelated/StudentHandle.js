@@ -1,4 +1,4 @@
-import { authRequest,authError, requestSuccess, authFailed, authGetListOfSubject, authGetTotalAttendanceOfStudent, authGetAttendanceOfParSubAndMonth, authGetDocsOfStudent, } from "./StudentSlice";
+import { authRequest,authError, requestSuccess, authFailed, authGetListOfSubject, authGetTotalAttendanceOfStudent, authGetAttendanceOfParSubAndMonth, authGetDocsOfStudent, authGetListOfNotices, } from "./StudentSlice";
 
 //Home api
 
@@ -134,7 +134,7 @@ export const sendDocsRequest = (fields,currentUser) => async(dispatch) =>{
 
         result = await result.json();
         console.log(result);
-        if(result?.message){
+        if(result?.message && result?.message !== "Internal server error"){
 
             dispatch(requestSuccess(result?.message));
         }else{
@@ -147,3 +147,29 @@ export const sendDocsRequest = (fields,currentUser) => async(dispatch) =>{
     }
 
 } 
+
+// request notice
+
+export const getNotice = (fields, currentUser) =>async(dispatch) => {
+    const {institute,selectedAuthority,roleType} = fields;
+    try {
+        let result = await fetch(`${process.env.REACT_APP_BASE_URL_BACKEND}/auth/student/getnotices/${institute}/${selectedAuthority}/${roleType}`,{
+            method:"get",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `${currentUser?.token}`
+            },
+        });
+        result = await result.json();
+        if(result?.message === "Internal server error"){
+            dispatch(authFailed(result));
+        }else if(result?.message === "Unauthorized: Invalid token"){
+            console.log(result);
+        }else{
+            dispatch(authGetListOfNotices(result));
+        }
+    } catch (error) {
+        console.error("Network Error:", error);
+        dispatch(authError("Network Error."));
+    }
+}

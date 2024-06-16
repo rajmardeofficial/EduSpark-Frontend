@@ -2,26 +2,27 @@ import React from "react";
 import "./Notice.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const ParticularNotice = ({ data,handleSelectedNotice }) => {
+const ParticularNotice = ({ data, handleSelectedNotice }) => {
   console.log(data);
   return (
     <div className="ParticularNoticeOuterDiv">
       <p className="noticeAndNamePart">
-        <span className="spanDivOfToShowNotice">
-          Notice
-        </span>
+        <span className="spanDivOfToShowNotice">Notice</span>
         <span>
-          <ArrowForwardIosIcon className="arrowInNoticebetNoandNa"/>
+          <ArrowForwardIosIcon className="arrowInNoticebetNoandNa" />
         </span>
-        <span className="nameInParticularNotice">
-          {data?.name}
-        </span>
+        <span className="nameInParticularNotice">{data?.name}</span>
       </p>
-      <h3>New Exam Preparation</h3>
+      <h3>{data?.title}</h3>
       <div
         style={{ width: "98%", display: "flex", justifyContent: "flex-end" }}
       >
-        <button className="backButtonNoticeee" onClick={() => handleSelectedNotice("")}>Back</button>
+        <button
+          className="backButtonNoticeee"
+          onClick={() => handleSelectedNotice("")}
+        >
+          Back
+        </button>
       </div>
       <div className="divPartOfNoticeTotalDetail1">
         <div>
@@ -33,23 +34,19 @@ const ParticularNotice = ({ data,handleSelectedNotice }) => {
         </div>
         <div className="divPartOfNoticewithoutpic">
           <div className="headerPartOfNotice">
-            <p className="senderInNotice">Mia Miss.</p>
-            <p className="noticeSendDate">Monday, 4/10/2024</p>
+            <p className="senderInNotice">{data?.firstName}</p>
+            <p className="noticeSendDate">
+              {new Date(data?.date).toLocaleString("en-US", {
+                weekday: "long",
+                month: "numeric",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </p>
           </div>
-          <p className="noticeSendDate">Teacher,Biology</p>
-          <p className="noticeInformation">
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-            Come to my Office now!! You Have left your assignment come here and
-          </p>
+          {/* <p className="noticeSendDate">{data?.title}</p> */}
+          <p className="noticeInformation" style={{marginTop:"20px"}}>{data?.content}</p>
+          <p>Document: {data?.document}</p>
         </div>
       </div>
     </div>
