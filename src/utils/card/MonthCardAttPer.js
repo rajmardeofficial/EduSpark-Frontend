@@ -6,6 +6,7 @@ const MonthCardAttPer = ({currMonPreAtt}) => {
     useEffect(() => {
       setProgress(parseFloat(currMonPreAtt));
     },[currMonPreAtt]);
+    console.log(currMonPreAtt);
   return (
     <Box
       sx={{

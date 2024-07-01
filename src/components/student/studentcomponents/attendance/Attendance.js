@@ -69,11 +69,9 @@ const Attendance = () => {
     setCurrMonPreAtt(currentMonthAttPre);
     setPreMonPreAtt(previousMonthAttPre);
     setDifferenceInperc(differenceInPer);
-    console.log(currentMonthAttPre,previousMonthAttPre,differenceInPer);
     
   }, [listOfAllAttendanceOfStudent]);
 
-  // console.log(listOfPreviousMonthAttendance,listOfAllAttendanceOfStudent);
   return (
     <>
       <div className="studentComponent">

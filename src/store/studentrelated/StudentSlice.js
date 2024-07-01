@@ -11,6 +11,7 @@ const initialState = {
     listOfCurrentMonthAttendance:[],
     listOfPreviousMonthAttendance:[],
     docsListOfStudent:[],
+    noticesListOfStudent:[],
 
 }
 
@@ -60,6 +61,10 @@ const studentSlice = createSlice({
             state.loading = false;
             state.docsListOfStudent = action.payload;
           },
+          authGetListOfNotices: (state, action) => {
+            state.loading = false;
+            state.noticesListOfStudent = action.payload;
+          }
 
     }
 });
@@ -74,6 +79,7 @@ export const {
     authGetTotalAttendanceOfStudent,
     authGetAttendanceOfParSubAndMonth,
     authGetDocsOfStudent,
+    authGetListOfNotices,
     authLogout,
   } = studentSlice.actions;
 

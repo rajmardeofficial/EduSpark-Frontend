@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./QuickView.css";
+import { useSelector } from "react-redux";
+import { countsUniqueSubjectAttData,AttendancePer } from "../AttendancePer";
 
 const QuickViewOfSubject = () => {
-  const subjectData = [
-    { name: "Mathematics", percentage: "85" },
-    { name: "Software Engineering", percentage: "75" },
-    { name: "Architecture", percentage: "60" },
-    { name: "Mechanical", percentage: "68" },
-    { name: "Physics", percentage: "78" },
-    { name: "Human Value", percentage: "30" },
-  ];
+  const {listOfAllSubject,listOfAllAttendanceOfStudent} = useSelector((state) => state.student);
+  const [subjectData, setSubjectData] = useState([]);
+
+  useEffect(() => {
+    const Data = countsUniqueSubjectAttData(listOfAllAttendanceOfStudent,listOfAllSubject);
+    setSubjectData(Data);
+  },[listOfAllAttendanceOfStudent,listOfAllSubject]);
+  console.log(listOfAllAttendanceOfStudent,listOfAllSubject);
 
   const colors = [
     "#008F39","#92BE13","#F2E146","#ED9C51","#D30B0B",
@@ -17,8 +19,9 @@ const QuickViewOfSubject = () => {
     "#6C33FF","#FF0000","#00FF00","#0000FF","#FFFF00",
   ];
 
-  const colorCount = Math.min(subjectData.length, colors?.length);
-  return (
+  const colorCount = Math.min(subjectData?.length, colors?.length);
+
+    return (
     <div className="quickViewOuterCard">
       <div className="quickViewTextDiv">
         <p style={{ fontWeight: "700", fontSize: "18px", lineHeight: "25px" }}>
@@ -26,14 +29,13 @@ const QuickViewOfSubject = () => {
         </p>
       </div>
       <div className="subjectContainers">
-        {subjectData &&
+        {subjectData?.length > 0 &&
           subjectData?.map((subject, index) => {
             const progressStyle = {
               height: "10px",
               backgroundColor: colors[index % colorCount],
-              width: `${subject.percentage}%`,
-              borderTopLeftRadius: "50px",
-              borderBottomLeftRadius: "50px",
+              width: `${AttendancePer(subject?.isPresentT+subject?.isPresentF,subject?.isPresentT)}%`,
+              borderRadius: "50px",
               transition: "width 0.3s ease-in-out",
             };
             return (
@@ -41,10 +43,10 @@ const QuickViewOfSubject = () => {
                 <p className="nameAndPercentageDiv">
                   <span className="subjectNameSpan">{subject?.name}</span> |{" "}
                   <span className="subjectPercentageInGreen">
-                    {subject?.percentage}%
+                  {AttendancePer(subject?.isPresentT+subject?.isPresentF,subject?.isPresentT)}%
                   </span>
                 </p>
-                <p className="flexEndPercentage">{subject?.percentage}%</p>
+                <p className="flexEndPercentage">{AttendancePer(subject?.isPresentT+subject?.isPresentF,subject?.isPresentT)} %</p>
                 <div className="progressStyleDivInQuickView">
                   <div style={progressStyle}></div>
                 </div>

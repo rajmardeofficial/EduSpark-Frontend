@@ -4,7 +4,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const AttenIncreaseCard = ({ differenceInPerc }) => {
   const [progress, setProgress] = useState(10);
-  console.log(differenceInPerc);
 
   useEffect(() => {
     const positiveA = Math.abs(differenceInPerc);
@@ -57,7 +56,7 @@ const AttenIncreaseCard = ({ differenceInPerc }) => {
           marginTop: "3px",
         }}
       >
-        Attendance increased by
+        Attendance {differenceInPerc >= 0 ?"increased":"decreased"} by
       </p>
     </div>
   );

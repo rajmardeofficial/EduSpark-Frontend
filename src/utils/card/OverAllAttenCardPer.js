@@ -7,8 +7,9 @@ const OverAllAttenCardPer = ({listOfAllAttendanceOfStudent}) => {
 
 
   useEffect(() => {
-    let presentDayInNo = listOfAllAttendanceOfStudent.filter((attend) => {
-      return attend.isPresent === true;
+    console.log(listOfAllAttendanceOfStudent);
+    let presentDayInNo = listOfAllAttendanceOfStudent && listOfAllAttendanceOfStudent?.filter((attend) => {
+      return attend?.isPresent === true;
     });
     const data = AttendancePer(listOfAllAttendanceOfStudent?.length,presentDayInNo?.length);
     setProgress(parseFloat(data));

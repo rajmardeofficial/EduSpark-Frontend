@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts"; // Assuming you have ReactApexChart imported
 import "./ColumnChart.css"
+import { useSelector } from "react-redux";
+import { AttendancePer, attendanceMonthData } from "../AttendancePer";
 
 const ColumnChart = () => {
+  const {listOfAllAttendanceOfStudent} = useSelector((state) => state.student);
+  const [listOfMonthAttendanceData, setListOfMonthAttendanceData] = useState();
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  useEffect(() => {
+    if(listOfAllAttendanceOfStudent){
+      const data = attendanceMonthData(listOfAllAttendanceOfStudent);
+      console.log(data);
+      setListOfMonthAttendanceData(data.map(da => AttendancePer(da.isPresentT + da.isPresentF, da.isPresentT)))
+      // console.log(data.map(da => AttendancePer(da.isPresentT + da.isPresentF, da.isPresentT)));     
+    }
+  },[listOfAllAttendanceOfStudent])
+  console.log(listOfAllAttendanceOfStudent,listOfMonthAttendanceData);
+
+
   // Use state to manage options and series data
   const colors = ["#2D60FF"]; // Single blue color for all columns
   const [chartData, setChartData] = useState({
     series: [
       {
         name:"Present %",
-        data: [21, 22, 10, 28, 16, 21, 13, 23, 44, 44, 30, 44],
+        data: listOfMonthAttendanceData || [0,0],
       },
     ],
     options: {
@@ -60,6 +77,19 @@ const ColumnChart = () => {
       colors,
     },
   });
+
+  useEffect(() => {
+    // Update chartData with new listOfMonthAttendanceData
+    setChartData(prevState => ({
+      ...prevState,
+      series: [
+        {
+          ...prevState.series[0],
+          data: listOfMonthAttendanceData || [0, 0],
+        },
+      ],
+    }));
+  }, [listOfMonthAttendanceData]);
 
   return (
     <div style={{backgroundColor:"white",width:"97%",marginLeft:"19px",borderRadius:"9px",marginTop:"20px"}}>
